@@ -1,0 +1,103 @@
+:root {
+  --box-shadow-1: 0 2px 5px rgba(37, 37, 37, 0.7);
+  /* --background-color: #1abdb5f3; */
+  --letter-spacing: 0.1rem;
+  --border-radius-1: 0.35rem;
+  --font-color-1: rgb(68, 68, 68);
+  --color-1: rgb(207, 207, 207);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+.color-displayer {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.title {
+  max-width: 400px;
+  width: 80vw;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  color: var(--font-color-1);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  border-radius: var(--border-radius-1);
+  background: #fff;
+  padding: 1rem 1.5rem;
+}
+#random-color-text {
+  font-size: 2rem;
+  text-transform:lowercase ;
+  /* color: var(--background-color); */
+}
+
+#copy-clipboard-icon{
+  margin-left: 1rem;
+  font-size: .875rem;
+  cursor: pointer;
+  transition: all .3s linear;
+  will-change: contents; /*fixed the text blur on chrome */
+}
+#copy-clipboard-icon:hover{
+  transform: scale(1.2);
+
+}
+.random-generator-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-1);
+  border: transparent;
+  box-shadow: var(--box-shadow-1);
+  text-transform: capitalize;
+  letter-spacing: var(--letter-spacing);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--font-color-1);
+  cursor: pointer;
+  will-change: contents; /*fixed the text blur on chrome */
+  transition: all, 0.5s ease-in-out;
+  background-color: #fff;
+}
+.random-generator-btn:hover {
+  transform: scale(1.03);
+}
+
+/* btn color values */
+.color-btn{
+  background-color: #fff;
+  padding: .5rem .85rem;
+  border-radius: var(--border-radius-1);
+  border: none;
+  box-shadow: var(--box-shadow-1);
+  transition: background-color .3s linear;
+  cursor: pointer;
+}
+.color-btn:hover {
+  background-color:var(--color-1);
+}
+.btn-selected{
+  background-color:var(--color-1) ;
+}
+@media screen and (min-width: 500px){
+  #color-displayer{
+    width: 500px;
+    margin: 0 auto;
+  }
+}

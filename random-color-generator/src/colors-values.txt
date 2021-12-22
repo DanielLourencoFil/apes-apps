@@ -1,0 +1,21 @@
+color values:
+
+1) hexadecimal(hex) #RRGGBB
+# + 6 caracteres from 16 possibilities (0 - 10, a, b, d, e, f]
+EX: #ff02cd
+
+
+2) rgb(red, green, blue)
+Each parameter (red, green, and blue) defines the intensity of the color between 0 and 255.
+EX: rgb(00, 00, 00).
+
+
+3) hsl(hue, saturation, lightness)
+Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, and 240 is blue.
+Saturation is a percentage value, 0% means a shade of gray, and 100% is the full color.
+Lightness is also a percentage, 0% is black, 50% is neither light or dark, 100% is white
+
+EX: hsl(0, 100%, 50%)
+
+(font: https://www.w3schools.com/css/css_colors_hsl.asp)
+

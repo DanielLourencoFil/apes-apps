@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        http-equiv="X-UA-Compatible"
+        content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <title>Random Color
+        Generator</title>
+    <link rel="stylesheet"
+        href="styles.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <main id="color-displayer"
+        class="color-displayer">
+        <h1 class="title">
+            random color
+            generator
+            <br><span
+                id="random-color-text">#ffffff</span><span><i
+                    id="copy-clipboard-icon"
+                    class="far fa-copy"></i></span>
+        </h1>
+        <button
+            class="random-generator-btn">generate
+            color</button>
+        <div
+            class="color-values-btns">
+            <button
+                data-color="hex"
+                class="color-btn">HEX</button>
+            <button
+                data-color="rgb"
+                class="color-btn">RGB</button>
+            <button
+                data-color="hsl"
+                class="color-btn">HSL</button>
+        </div>
+    </main>
+    <script src="src/app.js"
+        type="module"></script>
+</body>
+
+</html>
