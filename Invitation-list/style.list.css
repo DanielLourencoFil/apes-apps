@@ -1,0 +1,121 @@
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.loading-displayer {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	display: grid;
+	place-content: center;
+	/* display: block; */
+}
+.hide-loading {
+	display: none;
+}
+
+.title-1 {
+	text-align: center;
+	padding-left: 1rem;
+}
+.people-list-container {
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	/* background-color: red; */
+	width: 50vw;
+	max-width: 350px;
+	gap: 1rem;
+	padding: 0;
+}
+.people-list {
+	list-style-type: decimal;
+	/* list-style: none; */
+	text-transform: capitalize;
+	margin: 0;
+	padding: 0;
+}
+.people-list li {
+	padding: 0.5rem 0.5rem;
+	margin: 0;
+}
+
+[data-people] {
+	border: 1px solid grey;
+	border-collapse: collapse;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	justify-content: space-between;
+	justify-items: center;
+	align-items: center;
+	flex-direction: row;
+	gap: 5rem;
+}
+
+.people-delete-icon,
+.people-add-icon {
+	text-align: right;
+	font-size: 0.875rem;
+	color: grey;
+	transition: all 0.3s linear;
+}
+.people-delete-icon:hover {
+	color: red;
+}
+.people-add-icon:hover {
+	color: rgb(5, 219, 5);
+}
+
+.people-row-btn {
+	display: flex;
+	gap: 0.5rem;
+}
+.people-guests {
+	text-align: center;
+}
+
+.add-people-container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas:
+		"input1 input1 button"
+		"input2 input2 button";
+	gap: 0.15rem 0.25rem;
+}
+.add-people-container [data-input="people"] {
+	grid-area: input1;
+	padding: 0.35rem;
+}
+
+.add-people-container [data-input="guests"] {
+	grid-area: input2;
+	padding: 0.35rem;
+}
+.add-people-btn {
+	grid-area: button;
+	background-color: #fff;
+	border: 1px solid grey;
+	transition: all 0.3s linear;
+	text-transform: capitalize;
+}
+.add-people-btn:hover {
+	background-color: honeydew;
+}
+::placeholder {
+	opacity: 0.5;
+	font-size: 0.75rem;
+	line-height: 1.5;
+}
+
+[data-people="false"] {
+	color: red;
+}
+[data-people="true"] {
+	color: rgb(5, 219, 5);
+}

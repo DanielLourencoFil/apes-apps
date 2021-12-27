@@ -1,0 +1,32 @@
+[
+    {
+        "name": "john",
+        "id": 1,
+        "guests": 5,
+        "status": true
+    },
+    {
+        "name": "steve",
+        "id": 2,
+        "guests": 2,
+        "status": true
+    },
+    {
+        "name": "mary",
+        "id": 3,
+        "guests": 1,
+        "status": true
+    },
+    {
+        "name": "mike",
+        "id": 4,
+        "guests": 1,
+        "status": true
+    },
+    {
+        "name": "jenny",
+        "id": 5,
+        "guests": 5,
+        "status": false
+    }
+]
