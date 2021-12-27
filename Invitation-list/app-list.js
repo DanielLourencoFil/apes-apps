@@ -55,6 +55,10 @@ function renderPeopleList(dataObj) {
     
     people.forEach(person => {
         const userLi = `<li data-people="${person.status}" data-id="${person.id}" class="people-row">
+        <div class="checkbox">
+        <i class="fas fa-check checkbox-confirmed"></i>
+        <i class="fas fa-times checkbox-denied"></i>
+        </div>
         <span class="people-name">${person.name}</span>
         <span class="people-guests">${person.guests}</span>
         <div class="people-row-btn">
