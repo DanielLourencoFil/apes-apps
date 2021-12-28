@@ -12,9 +12,9 @@
 	--color-dark-500: rgb(107, 112, 92);
 	--color-light-200: rgba(242, 242, 242, 0.8);
 	--color-light-500: rgb(232, 232, 228);
-	--color-alert-sucess-1: rgb(0, 209, 70);
-	--color-alert-sucess-2: rgba(42, 157, 143, 0.1);
-	--color-alert-danger: rgb(247, 0, 33);
+	--color-alert-confirmed-1: rgb(0, 209, 70);
+	--color-alert-confirmed-2: rgba(42, 157, 143, 0.1);
+	--color-alert-denied-1: rgb(247, 0, 33);
 	--box-shadow-1: 2px 4px 10px rgba(107, 112, 92, 0.3);
 	--box-shadow-2: 0 0 4px 2px rgba(42, 157, 143, 0.5);
 	--box-shadow-3: 0 0 2px 1px rgba(0, 209, 70, 0.6);
@@ -43,8 +43,8 @@ h1 {
 	font-size: 1.575rem;
 }
 
-p {
-	font-size: 0.875rem;
+p span i {
+	font-size: 0.75rem;
 	margin: 0;
 	padding: 0;
 	margin-bottom: 1rem;
@@ -89,6 +89,7 @@ button {
 	display: grid;
 	place-content: center;
 	/* display: block; */
+	z-index: 999;
 }
 .hide-loading {
 	display: none;
@@ -121,6 +122,7 @@ button {
 	/* list-style: decimal; */
 	text-transform: capitalize;
 	margin: 0;
+	/* margin-bottom: 2rem; */
 	padding: 0;
 }
 .people-list li {
@@ -134,7 +136,7 @@ button {
 	border-bottom: 1px solid grey;
 	border-collapse: collapse;
 	display: grid;
-	grid-template-columns: 1fr 3fr 2fr 1fr;
+	grid-template-columns: 0.5fr 1fr 3fr 2fr 1fr;
 	justify-content: center;
 	justify-items: left;
 	align-items: center;
@@ -143,7 +145,7 @@ button {
 	text-align: left;
 }
 
-/*checkbox*/
+/*CHECKBOX*/
 .checkbox {
 	position: relative;
 	border-radius: 0.15rem;
@@ -151,7 +153,6 @@ button {
 	width: 1rem;
 	height: 1rem;
 	text-align: center;
-	/* padding: 0.5rem; */
 }
 .checkbox-confirmed,
 .checkbox-denied {
@@ -161,8 +162,22 @@ button {
 	left: 0;
 	right: 0;
 	text-align: center;
-	/* opacity: 0; */
+	opacity: 0;
+	transition: all 0.3s linear;
 }
+.status-confirmed {
+	color: var(--color-alert-confirmed-1);
+}
+.status-denied {
+	color: var(--color-alert-denied-1);
+}
+
+.checkbox-icon-show {
+	opacity: 1;
+}
+
+/* EDIT/ADD AND DELETE ICONS */
+
 .people-delete-icon,
 .people-add-icon {
 	text-align: right;
@@ -171,10 +186,10 @@ button {
 	transition: all 0.3s linear;
 }
 .people-delete-icon:hover {
-	color: red;
+	color: var(--color-alert-denied-1);
 }
 .people-add-icon:hover {
-	color: rgb(5, 219, 5);
+	color: var(--color-alert-confirmed-1);
 }
 
 .people-row-btn {
@@ -185,6 +200,25 @@ button {
 	text-align: center;
 }
 
+/* TOTAL GUESTS COUNTER */
+.total-guests-counter {
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+	justify-items: right;
+	gap: 4rem;
+	margin-bottom: 1rem;
+}
+.total-guests-counter p {
+	font-size: 1rem;
+	text-transform: capitalize;
+	margin: 0;
+}
+/* .total-guests-title {
+}
+.total-guests-number {
+} */
+
+/* ADD PRIMARY GUESTS  */
 .add-people-container {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -223,11 +257,4 @@ button {
 	opacity: 0.5;
 	font-size: 0.75rem;
 	line-height: 1.5;
-}
-
-[data-people="false"] {
-	color: red;
-}
-[data-people="true"] {
-	color: rgb(5, 219, 5);
 }

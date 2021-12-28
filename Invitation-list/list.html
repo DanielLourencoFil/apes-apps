@@ -26,8 +26,18 @@
         Invitation List
     </h1>
     <section
-        class="people-list-container">
-        <ul class="people-list"></ul>
+        
+    class="people-list-container">
+    <!-- list of primary guests -->
+    <ol class="people-list"></ol>
+  
+    <!-- total guests counter -->
+    <div class="total-guests-counter">
+        <p class="total-guests-title">total</p>
+        <p id="total-guests-number">6</p>
+    </div>
+        
+    <!-- add guests primary container -->
         <div
             class="add-people-container">
             <input
@@ -46,12 +56,9 @@
         </div>
     </section>
     </div>
-    <div class="checkbox">
-        <i class="fas fa-check confirmed"></i>
-        <i class="fas fa-times denied"></i>
-    </div>
+   
     <script
-        src="app-list.js"></script>
+        src="src/app-list.js" type="module"></script>
 </body>
 
 </html>

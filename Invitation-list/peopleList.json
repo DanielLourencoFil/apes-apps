@@ -2,31 +2,37 @@
     {
         "name": "john",
         "id": 1,
-        "guests": 5,
-        "status": true
+        "guests": 3,
+        "guestsNames": ["Danny", "Carla", "Peter"],
+        "status": 1
     },
     {
         "name": "steve",
         "id": 2,
-        "guests": 2,
-        "status": true
+        "guests": 3,
+         "guestsNames": ["Jonny", "Karl", "Dimitry"],
+        "status": 0    
     },
     {
         "name": "mary",
         "id": 3,
         "guests": 1,
-        "status": true
-    },
+         "guestsNames": ["John"],
+        "status": 0    
+},
     {
         "name": "mike",
         "id": 4,
-        "guests": 1,
-        "status": true
-    },
+        "guests": 3,
+         "guestsNames": ["Patricia", "Karmen", "Bill"],
+        "status": 0    
+},
     {
         "name": "jenny",
         "id": 5,
-        "guests": 5,
-        "status": false
-    }
+        "guests": 4,
+         "guestsNames": ["Ivory", "Anderson", "Billy", "Mick"],
+        "status": 0   
+}
+
 ]
