@@ -1,5 +1,6 @@
 import { renderPeopleList } from "./renderPeopleList.js";
 import { getDataLocalStorage, updateLocalStorage } from "./localStorage.js";
+import { totalGuestsCounter } from "./total-guests-counter.js";
 
 
 export function editPerson(){
@@ -12,6 +13,7 @@ export function editPerson(){
             person.remove();
             updateLocalStorage(person, null,"remove")
             renderPeopleList(getDataLocalStorage)
+            totalGuestsCounter()
 
         }
         if(e.target.classList.contains('people-add-icon')){

@@ -29,6 +29,7 @@ export function checkboxChangeStatus(){
                
                 
                 updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, "status")
+                totalGuestsCounter()
             }
             if(checkboxStatus == 1){
                 checkboxDenied.classList.add('checkbox-icon-show')
@@ -52,6 +53,7 @@ export function checkboxChangeStatus(){
                 currentGuestsNumber.classList.remove('status-denied')
 
                 updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, "status")
+                totalGuestsCounter()
             }
         }
     })
