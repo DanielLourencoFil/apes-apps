@@ -1,3 +1,4 @@
+import { idGenerator } from "./id-generator.js";
 import { getDataLocalStorage, setLocalStorage } from "./localStorage.js";
 import {renderPeopleList} from './renderPeopleList.js'
 import { totalGuestsCounter } from "./total-guests-counter.js";
@@ -11,9 +12,9 @@ export function updateNewPerson(){
         const newGuestsNumber = document.querySelector('[data-input="guests"]') || 0;
         const newPersonName = document.querySelector('[data-input="people"]');
         
-        // console.log(e.target);
+        console.log(newGuestsNumber.value);
         if(e.target == addPersonBtn){
-            const newPersonId = updatedPeopleList[updatedPeopleList.length - 1].id + 1 ? updatedPeopleList[updatedPeopleList.length - 1].id + 1 : 1;
+            const newPersonId = idGenerator();
             console.log(newPersonId);
             const newPersonStatus = 0;
 
@@ -26,13 +27,14 @@ export function updateNewPerson(){
             else {
                 updatedPeopleList.push({
                 "name": newPersonName.value,
-                "id": newPersonId ? newPersonId : 1,
-                "guests": parseInt(newGuestsNumber.value),
+                "id": !newPersonId ? 1 :newPersonId,
+                // "guests": parseInt(newGuestsNumber.value),
+                "guests": (newGuestsNumber.value != "") ? parseInt(newGuestsNumber.value): 0,
                 "guestsNames": [],
                 "status": newPersonStatus
             })
             
-            // console.log('from new person funcyion');
+            // console.log('from new person function');
             renderPeopleList(updatedPeopleList)
             
             newPersonName.value = ""
@@ -40,7 +42,7 @@ export function updateNewPerson(){
         }
             
         }
-         //clean input field if it has a alert
+         //clean input field if it has a alert message
          if(newPersonName.value){
             
             emptyInputAlert(newPersonName)
@@ -53,10 +55,14 @@ export function updateNewPerson(){
 
 function emptyInputAlert(input){
     const alertMessage = "Please, insert the guest name"
-if(input.value == ''){
+
+//empty input
+    if(input.value == ''){
     input.classList.add('input-alert')
     input.value = alertMessage;
 }
+
+// input with alert message
 if(input.value == alertMessage && input === document.activeElement){
     input.value = ''
     input.classList.remove('input-alert')
@@ -64,10 +70,3 @@ if(input.value == alertMessage && input === document.activeElement){
 
 }
 
-// function inputFocus(input, alert){
-//     if(input === document.activeElement && input.value == alertMessage){
-//         console.log(input.value, "cleaning input");
-//         input.value = ''
-//         input.classList.remove('input-alert')
-//     }
-// }

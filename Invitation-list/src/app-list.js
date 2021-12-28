@@ -5,6 +5,7 @@ import { checkboxChangeStatus, checkboxRenderStatus } from "./checkbox.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import { editPerson } from "./edit-person.js";
 
+
 const url = "peopleList.json";
 
 // let peopleList = []
