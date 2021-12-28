@@ -1,6 +1,6 @@
 import {checkboxChangeStatus, checkboxRenderStatus} from './checkbox.js'
 import { getDataLocalStorage } from './localStorage.js';
-import { totalGuestsCounter } from './total-guests-counter.js';
+// import { totalGuestsCounter } from './total-guests-counter.js';
 
 export function renderPeopleList(dataObj) {
     let people = dataObj;
@@ -25,7 +25,7 @@ export function renderPeopleList(dataObj) {
         <span class="people-name">${person.name}</span>
         <span class="people-guests">${person.guests}</span>
         <div class="people-row-btn">
-        <i class="fa fa-user-plus people-add-icon" aria-hidden="true" ></i>
+        <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
         <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
         </div>
         </li>`;

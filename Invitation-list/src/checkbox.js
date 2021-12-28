@@ -28,7 +28,7 @@ export function checkboxChangeStatus(){
                 currentGuestsNumber.classList.add('status-confirmed')
                
                 
-                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, checkboxStatus)
+                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, "status")
             }
             if(checkboxStatus == 1){
                 checkboxDenied.classList.add('checkbox-icon-show')
@@ -41,7 +41,7 @@ export function checkboxChangeStatus(){
                 currentPerson.classList.add('status-denied')
                 currentGuestsNumber.classList.add('status-denied')
                 
-                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent)
+                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, "status")
                 totalGuestsCounter()
             }
             if(checkboxStatus == 2){
@@ -51,7 +51,7 @@ export function checkboxChangeStatus(){
                  currentPerson.classList.remove('status-denied')
                 currentGuestsNumber.classList.remove('status-denied')
 
-                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent)
+                updateLocalStorage(checkboxCurrent.parentElement, checkboxCurrent, "status")
             }
         }
     })
