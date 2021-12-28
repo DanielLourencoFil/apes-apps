@@ -5,15 +5,14 @@ import { totalGuestsCounter } from "./total-guests-counter.js";
 
 export function editPerson(){
     const peopleListTag = document.getElementsByClassName('people-list')[0];
-    console.log(peopleListTag);
     peopleListTag.addEventListener('click', (e)=>{
         const person = e.target.parentElement.parentElement
+        const personName = person.querySelector('.people-name').textContent;
         if(e.target.classList.contains('people-delete-icon')){
+            if(deletePersonAlert(personName) === true) {
+                deletePerson(person)
+            } 
             
-            person.remove();
-            updateLocalStorage(person, null,"remove")
-            renderPeopleList(getDataLocalStorage)
-            totalGuestsCounter()
 
         }
         if(e.target.classList.contains('people-add-icon')){
@@ -23,10 +22,19 @@ export function editPerson(){
     })
 }
 
-function deletePerson(){
-
+function deletePerson(person){
+    person.remove();
+    updateLocalStorage(person, null,"remove")
+    renderPeopleList(getDataLocalStorage)
+    totalGuestsCounter()
 }
 
 function editGuests(){
+//add secondary guests names
+}
+
+function deletePersonAlert(person){
+//alert before delete primary guest
+return confirm(`Do you want delete ${person}?`)
 
 }

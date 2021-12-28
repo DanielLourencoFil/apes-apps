@@ -220,6 +220,9 @@ button {
 
 /* ADD PRIMARY GUESTS  */
 .add-people-container {
+	/* display: fixed; 
+	findout how to keep this fixed at bottom
+	css book in kindle*/
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
