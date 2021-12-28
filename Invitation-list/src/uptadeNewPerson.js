@@ -2,6 +2,7 @@ import { idGenerator } from "./id-generator.js";
 import { getDataLocalStorage, setLocalStorage } from "./localStorage.js";
 import {renderPeopleList} from './renderPeopleList.js'
 import { totalGuestsCounter } from "./total-guests-counter.js";
+import {emptyInputAlert} from "./empty-input.js"
 
 export function updateNewPerson(){
     const addPeopleForm = document.getElementsByClassName('add-people-container')[0]
@@ -11,6 +12,7 @@ export function updateNewPerson(){
 
         const newGuestsNumber = document.querySelector('[data-input="guests"]') || 0;
         const newPersonName = document.querySelector('[data-input="people"]');
+        const alertMessage = "Please, insert the guest name";
         
         console.log(newGuestsNumber.value);
         if(e.target == addPersonBtn){
@@ -20,7 +22,7 @@ export function updateNewPerson(){
 
             console.log(newPersonName);
             if(newPersonName.value == ''){
-                 emptyInputAlert(newPersonName)
+                 emptyInputAlert(newPersonName, alertMessage)
             }
            
             
@@ -45,7 +47,7 @@ export function updateNewPerson(){
          //clean input field if it has a alert message
          if(newPersonName.value){
             
-            emptyInputAlert(newPersonName)
+            emptyInputAlert(newPersonName, alertMessage)
         }
 
         setLocalStorage(updatedPeopleList)
@@ -53,20 +55,5 @@ export function updateNewPerson(){
     })
 }
 
-function emptyInputAlert(input){
-    const alertMessage = "Please, insert the guest name"
 
-//empty input
-    if(input.value == ''){
-    input.classList.add('input-alert')
-    input.value = alertMessage;
-}
-
-// input with alert message
-if(input.value == alertMessage && input === document.activeElement){
-    input.value = ''
-    input.classList.remove('input-alert')
-}
-
-}
 
