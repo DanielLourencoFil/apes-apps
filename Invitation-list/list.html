@@ -30,6 +30,14 @@
     class="people-list-container">
     <!-- list of primary guests -->
     <ol class="people-list"></ol>
+
+    <!-- modal for secondary lis of guests -->
+    <div class="secondary-guests-container people-list-container">
+        <i class="fa fa-times close-secondary-modal" aria-hidden="true"></i>
+        <ol class="secondary-guests-list people-list">       
+        </ol>
+        <button class="extra-guest-btn">extra guest</button>
+    </div>
   
     <!-- total guests counter -->
     <div class="total-guests-counter">
@@ -56,7 +64,8 @@
         </div>
     </section>
     </div>
-   <!-- modal for secondary guests -->
+   
+
    <!-- alert for delete primary guest -->
     <script
         src="src/app-list.js" type="module"></script>

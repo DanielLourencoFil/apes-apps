@@ -10,7 +10,7 @@
         "name": "steve",
         "id": 2,
         "guests": 3,
-         "guestsNames": ["Jonny", "Karl", "Dimitry"],
+        "guestsNames": ["Jonny", "Karl", "Dimitry"],
         "status": 0    
     },
     {

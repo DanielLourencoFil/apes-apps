@@ -29,8 +29,7 @@ export function updateNewPerson(){
             else {
                 updatedPeopleList.push({
                 "name": newPersonName.value,
-                "id": !newPersonId ? 1 :newPersonId,
-                // "guests": parseInt(newGuestsNumber.value),
+                "id": newPersonId,
                 "guests": (newGuestsNumber.value != "") ? parseInt(newGuestsNumber.value): 0,
                 "guestsNames": [],
                 "status": newPersonStatus

@@ -1,6 +1,9 @@
 import {checkboxChangeStatus, checkboxRenderStatus} from './checkbox.js'
 import { getDataLocalStorage } from './localStorage.js';
+import  {idGenerator} from './id-generator.js'
+import { closeSecondaryGuestModal } from './edit-person.js';
 // import { totalGuestsCounter } from './total-guests-counter.js';
+
 
 export function renderPeopleList(dataObj) {
     let people = dataObj;
@@ -31,6 +34,55 @@ export function renderPeopleList(dataObj) {
         </li>`;
         peopleListTag.innerHTML += userLi;
     });
-    checkboxRenderStatus()
-    
+    checkboxRenderStatus()   
 }
+
+export function renderSecondaryGuestsList(person){
+    const id = person.getAttribute('data-id')
+    const peopleList = getDataLocalStorage();
+    const secondaryGuestList = document.querySelector('.secondary-guests-list')
+    
+    //show secondary guests modal
+    secondaryGuestList.parentElement.classList.add('secondary-guests-show') 
+    
+    peopleList.forEach(person =>{
+        if(person.id == id){
+        // const secondaryGuestId =  idGenerator();   
+        let personNumber = 1;
+        
+        const emptySecondaryGuestList = person["guestsNames"].length == 0;
+
+        let list = [];
+        
+        //if guest list is empty create a guest array of menssages with the num of guests informed
+        //if ZERO, create array with ONE message  
+        if(emptySecondaryGuestList){
+            const messageEmptyList = "add guest name"; 
+            const personGuestsNumber = person['guests'] || 1
+            for(let i = 0; i < personGuestsNumber; i++){
+                list.push(messageEmptyList)
+            }
+        }
+        else{
+            list = person["guestsNames"]
+        }
+
+        list.forEach(guest =>{
+                      
+            const secondaryGuestLi = 
+            `<li data-id="${person.id}" class="people-row-secondary">
+            <span class="person-number">${personNumber++}.</span>
+            <span class="people-name">${guest}</span>
+            <div class="people-row-btn people-secondary-btn">
+            <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
+            <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
+            </div>
+            </li>`;
+
+            secondaryGuestList.innerHTML += secondaryGuestLi;
+        })
+        }
+    })
+    closeSecondaryGuestModal(secondaryGuestList)
+}
+

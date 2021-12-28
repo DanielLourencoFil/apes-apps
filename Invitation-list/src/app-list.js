@@ -1,9 +1,10 @@
 import { setLocalStorage, getDataLocalStorage, updateLocalStorage } from "./localStorage.js";
 import { updateNewPerson} from "./uptadeNewPerson.js";
-import { renderPeopleList } from "./renderPeopleList.js";
+import { renderPeopleList} from "./renderPeopleList.js";
 import { checkboxChangeStatus, checkboxRenderStatus } from "./checkbox.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
-import { editPerson } from "./edit-person.js";
+import { editPerson} from "./edit-person.js";
+// import { editPerson, editSecondaryPerson } from "./edit-person.js";
 
 
 const url = "peopleList.json";
@@ -24,7 +25,11 @@ window.addEventListener('DOMContentLoaded', () => {
         updateNewPerson()
 
         totalGuestsCounter()
-        editPerson()
+        editPerson(0)
+        editPerson(1)
+
+        // editSecondaryPerson(1);
+
         
     } else {
         
@@ -40,9 +45,13 @@ window.addEventListener('DOMContentLoaded', () => {
             updateNewPerson()
 
             totalGuestsCounter()
-            editPerson()
+            editPerson(0)
+            editPerson(1)
+            // editSecondaryPerson(1);
+
             
         }));
     }
 });
 
+// editPersonSecondary();
