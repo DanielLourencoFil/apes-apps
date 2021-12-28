@@ -120,9 +120,10 @@ button {
 }
 .people-list {
 	/* list-style: decimal; */
+	/* margin-bottom: 2rem; */
+	flex: 1 0 auto;
 	text-transform: capitalize;
 	margin: 0;
-	/* margin-bottom: 2rem; */
 	padding: 0;
 }
 .people-list li {
@@ -221,7 +222,7 @@ button {
 /* ADD PRIMARY GUESTS  */
 .add-people-container {
 	/* display: fixed; 
-	findout how to keep this fixed at bottom
+	find out how to keep this fixed at bottom
 	css book in kindle*/
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -260,4 +261,9 @@ button {
 	opacity: 0.5;
 	font-size: 0.75rem;
 	line-height: 1.5;
+}
+
+.input-alert {
+	border: 1px solid var(--color-alert-denied-1) !important;
+	box-shadow: 0px 0px 3px var(--color-alert-denied-1);
 }
