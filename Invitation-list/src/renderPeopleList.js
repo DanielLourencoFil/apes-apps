@@ -28,7 +28,7 @@ export function renderPeopleList(dataObj) {
         <i class="fas fa-check checkbox-confirmed status-confirmed"></i>
         <i class="fas fa-times checkbox-denied status-denied"></i>
         </div>
-        <input class="people-name" value="${person.name}" disabled>
+        <input class="people-name" value="${person.name}"  type="text" disabled>
         <span class="people-guests">${person.guests}</span>
         <div class="people-row-btn">
         <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
@@ -43,7 +43,8 @@ export function renderPeopleList(dataObj) {
 export function renderSecondaryGuestsList(person){
     const id = person.getAttribute('data-id')
     const peopleList = getDataLocalStorage();
-    const secondaryGuestList = document.querySelector('.secondary-guests-list')
+    // const secondaryGuestList = document.querySelector('.secondary-guests-list')
+    const secondaryGuestList = document.getElementsByClassName('secondary-guests-list')[0]
     // console.log(secondaryGuestList);
     //secondary guest list clean content
     // secondaryGuestList.innerHTML = '';
@@ -61,11 +62,11 @@ export function renderSecondaryGuestsList(person){
         // let secondaryGuestLi = "";
         let secondaryGuestLi = `<li data-id="${person.id}" class="people-row-secondary">
         <span class="person-number">${1}.</span>
-        <input class="people-name" value="${person.name}">
+        <input class="people-name" value="${person.name}"  type="text" disabled="true">
         <div class="people-row-btn people-secondary-btn">
         <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
         </div>
-        </li>`;;
+        </li>`;
 
         let list = [];
         
@@ -82,8 +83,7 @@ export function renderSecondaryGuestsList(person){
             list = person["guestsNames"]
             
         }
-console.log(list);
-console.log(peerson.guests);
+
         list.forEach(guest =>{
 
             // console.log(list);
@@ -91,7 +91,7 @@ console.log(peerson.guests);
             secondaryGuestLi += 
             `<li data-id="${person.id}" class="people-row-secondary">
             <span class="person-number">${personNumber}.</span>
-            <input class="people-name" value="${guest}">
+            <input class="people-name" type="text" value="${guest}" disabled="true">
             <div class="people-row-btn people-secondary-btn">
             <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
             <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>

@@ -153,12 +153,16 @@ button {
 	font-size: 1rem;
 	text-transform: capitalize;
 	/* margin-left: 1rem; */
-	width: 65%;
+	width: 100%;
+	padding: 0.25rem 0;
+}
+.people-name:focus {
+	outline: transparent;
+	background-color: var(--color-white);
 }
 .show-input-name {
 	background-color: var(--color-white) !important;
 }
-/* .input-disabled:disabled{} */
 
 /*CHECKBOX*/
 .checkbox {

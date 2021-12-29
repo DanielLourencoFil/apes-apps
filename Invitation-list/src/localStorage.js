@@ -3,7 +3,6 @@ export function setLocalStorage(dataObj){
 }
 
 export function getDataLocalStorage() {
-     
      return JSON.parse(localStorage.getItem('peopleList'));
 }
 
@@ -33,7 +32,7 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
                 
                 // person.guests = (person.guests > 0) ? person.guests -1: 0;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)
-                const secondaryGuestName = currentPerson.querySelector('.people-name').value;
+                const secondaryGuestName = currentPerson.getElementsByClassName('people-name')[0].value;
                 const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);
                 const secondaryGuestsNamesList = updatedPeopleList[primaryGuestIndex]['guestsNames'];
                 

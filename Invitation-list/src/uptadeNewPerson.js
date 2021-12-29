@@ -4,6 +4,7 @@ import {renderPeopleList} from './renderPeopleList.js'
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import {emptyInputAlert} from "./empty-input.js"
 
+
 export function updateNewPerson(){
     const addPeopleForm = document.getElementsByClassName('add-people-container')[0]
     addPeopleForm.addEventListener('click',(e)=>{
@@ -17,15 +18,14 @@ export function updateNewPerson(){
         console.log(newGuestsNumber);
         if(e.target == addPersonBtn){
             const newPersonId = idGenerator();
-            // console.log(newPersonId);
+
             const newPersonStatus = 0;
 
             console.log(newPersonName);
+            
             if(newPersonName.value == '' || newPersonName.value == alertMessage){
                  emptyInputAlert(newPersonName, alertMessage)
-                
             }
-           
             
             else {
                 updatedPeopleList.push({

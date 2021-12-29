@@ -21,12 +21,19 @@ window.addEventListener('DOMContentLoaded', () => {
         
         let peopleList = getDataLocalStorage()
         renderPeopleList(peopleList)
-        checkboxChangeStatus()
+        
         updateNewPerson()
+        
+        checkboxChangeStatus()
+        
+        // updateNewPerson()
 
         totalGuestsCounter()
         editPerson(0)
         editPerson(1)
+
+        // updateNewPerson()
+
         // editSecondaryPerson(1);
     } else {
         
@@ -36,14 +43,19 @@ window.addEventListener('DOMContentLoaded', () => {
             setLocalStorage(peopleListAjax);
             renderPeopleList(getDataLocalStorage)
 
+            updateNewPerson()
+
             checkboxChangeStatus()
             checkboxRenderStatus()
             
-            updateNewPerson()
+            // updateNewPerson()
 
             totalGuestsCounter()
             editPerson(0)
             editPerson(1)
+
+            // updateNewPerson()
+
             // editSecondaryPerson(1);
         }));
     }
