@@ -6,7 +6,7 @@ export function getDataLocalStorage() {
      return JSON.parse(localStorage.getItem('peopleList'));
 }
 
-export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate) {
+export function updateLocalStorage(currentPerson, currentPersonData, toUpdate) {
     let updatedPeopleList = getDataLocalStorage();
     
     updatedPeopleList.forEach(person => {
@@ -15,32 +15,53 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
         
         if(person['id'] == userId){
             if (toUpdate === "status") {
-                person['status'] = parseInt(currentPersonStatus.getAttribute('data-status'));
+                person['status'] = parseInt(currentPersonData.getAttribute('data-status'));
             }
             
             if(toUpdate === "remove primary guest"){
                 console.log(updatedPeopleList.indexOf(person));
                 updatedPeopleList.splice(updatedPeopleList.indexOf(person), 1)
-                
-                // console.log('i will remove');
             }
             
             if(toUpdate === "remove secondary guest"){
                 person.guests = person.guests - 1;
                
-                // console.log(toUpdate, "from update function");
-                
-                // person.guests = (person.guests > 0) ? person.guests -1: 0;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)
                 const secondaryGuestName = currentPerson.getElementsByClassName('people-name')[0].value;
                 const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);
                 const secondaryGuestsNamesList = updatedPeopleList[primaryGuestIndex]['guestsNames'];
-                
-                // console.log(secondaryGuestNameIndex);
-                // console.log(secondaryGuestsNamesList);
+     
                 console.log(secondaryGuestNameIndex);
                 secondaryGuestsNamesList.splice(secondaryGuestNameIndex, 1)
+            }
+            if(toUpdate === "edit guest"){
+                console.log(updatedPeopleList);
+                console.log(currentPersonData); // to be updated
                 
+                console.log(person.name);
+                
+
+
+                
+                for(let guest of updatedPeopleList){
+                    if(guest.name == person.name){
+                        console.log(guest, 'yes');
+                    
+                    
+
+
+                    };
+                }
+
+
+                const primaryGuestIndex = updatedPeopleList.indexOf(person.name)
+                const secondaryGuestName = currentPerson.getElementsByClassName('people-name')[0].value;
+                const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);
+                // const secondaryGuestsNamesList = updatedPeopleList[primaryGuestIndex]['guestsNames'];
+     
+                // console.log(primaryGuestIndex);
+                // console.log(secondaryGuestNameIndex);
+                // secondaryGuestsNamesList.splice(secondaryGuestNameIndex, 1)
             }
         }
         
