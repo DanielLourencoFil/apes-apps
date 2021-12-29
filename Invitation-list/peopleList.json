@@ -2,35 +2,35 @@
     {
         "name": "john",
         "id": 1,
-        "guests": 3,
+        "guests": 4,
         "guestsNames": ["Danny", "Carla", "Peter"],
         "status": 1
     },
     {
         "name": "steve",
         "id": 2,
-        "guests": 3,
+        "guests": 4,
         "guestsNames": ["Jonny", "Karl", "Dimitry"],
         "status": 0    
     },
     {
         "name": "mary",
         "id": 3,
-        "guests": 1,
+        "guests": 2,
          "guestsNames": ["John"],
         "status": 0    
 },
     {
         "name": "mike",
         "id": 4,
-        "guests": 3,
+        "guests": 4,
          "guestsNames": ["Patricia", "Karmen", "Bill"],
         "status": 0    
 },
     {
         "name": "jenny",
         "id": 5,
-        "guests": 4,
+        "guests": 5,
          "guestsNames": ["Ivory", "Anderson", "Billy", "Mick"],
         "status": 0   
 }

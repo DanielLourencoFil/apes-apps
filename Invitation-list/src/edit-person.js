@@ -13,7 +13,7 @@ export function editPerson(indexList){
 
         const personName = person.querySelector('.people-name').value;
         if(e.target.classList.contains('people-delete-icon')){
-            console.log("deleteeeeeeeeeeeeeeeeeeee");
+            // console.log("deleteeeeeeeeeeeeeeeeeeee");
             if(deletePersonAlert(personName) === true) {
                 deletePerson(person, indexList)
             } 
@@ -32,8 +32,8 @@ export function editPerson(indexList){
         
         // personNameInput.classList.add('show-input-name')
         // personNameInput.disabled = false;
-        console.log(personNameInput);
-        console.log(personNameInput.disabled);
+        // console.log(personNameInput);
+        // console.log(personNameInput.disabled);
         // personNameInput.focus()
 
 
@@ -49,16 +49,16 @@ function deletePerson(person, indexList){
     
     if(indexList == 0){
         toUpDate = "remove primary guest"
+        updateLocalStorage(person, null, toUpDate)
     }
     if(indexList == 1){
         toUpDate = "remove secondary guest"
-        console.log(person, "delete", toUpDate)
+        // console.log(person, "delete", toUpDate)
         updateLocalStorage(person, null, toUpDate)
         renderSecondaryGuestsList(person)
     }
     // console.log(indexList, toUpDate);
     person.remove();
-    updateLocalStorage(person, null, toUpDate)
     totalGuestsCounter()
     renderPeopleList(getDataLocalStorage)
 }

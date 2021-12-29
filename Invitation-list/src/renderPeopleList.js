@@ -16,7 +16,7 @@ export function renderPeopleList(dataObj) {
     peopleListTag.innerHTML = '';
     
     peopleList.forEach(person => {
-        const guestsNumber = person['guestsNames'].length;
+        const guestsNumber = person['guestsNames'].length + 1;
         // console.log(guestsNumber);
         // console.log(person.guests);
         //number for list order and quantity of primary guests
@@ -29,7 +29,7 @@ export function renderPeopleList(dataObj) {
         <i class="fas fa-times checkbox-denied status-denied"></i>
         </div>
         <input class="people-name" value="${person.name}" disabled>
-        <span class="people-guests">${(guestsNumber == 0) ? person.guests : guestsNumber}</span>
+        <span class="people-guests">${guestsNumber}</span>
         <div class="people-row-btn">
         <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
         <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
@@ -44,7 +44,7 @@ export function renderSecondaryGuestsList(person){
     const id = person.getAttribute('data-id')
     const peopleList = getDataLocalStorage();
     const secondaryGuestList = document.querySelector('.secondary-guests-list')
-    console.log(secondaryGuestList);
+    // console.log(secondaryGuestList);
     //secondary guest list clean content
     // secondaryGuestList.innerHTML = '';
     secondaryGuestList.innerHTML = "";
@@ -58,6 +58,15 @@ export function renderSecondaryGuestsList(person){
                 
         const secondaryGuestListLength = person["guestsNames"].length;
         
+        // let secondaryGuestLi = "";
+        let secondaryGuestLi = `<li data-id="${person.id}" class="people-row-secondary">
+        <span class="person-number">${1}.</span>
+        <input class="people-name" value="${person.name}">
+        <div class="people-row-btn people-secondary-btn">
+        <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
+        </div>
+        </li>`;;
+
         let list = [];
         
         //if guest list is empty create a guest array of menssages with the number of guests informed
@@ -77,8 +86,8 @@ export function renderSecondaryGuestsList(person){
         list.forEach(guest =>{
 
             // console.log(list);
-            const personNumber = parseInt(list.indexOf(guest)) + 1;
-            const secondaryGuestLi = 
+            const personNumber = parseInt(list.indexOf(guest)) + 2;
+            secondaryGuestLi += 
             `<li data-id="${person.id}" class="people-row-secondary">
             <span class="person-number">${personNumber}.</span>
             <input class="people-name" value="${guest}">
@@ -88,9 +97,10 @@ export function renderSecondaryGuestsList(person){
             </div>
             </li>`;
 
-            secondaryGuestList.innerHTML += secondaryGuestLi;
+            secondaryGuestList.innerHTML = secondaryGuestLi;
         })
         }
+        
     })
     closeSecondaryGuestModal(secondaryGuestList)
 }

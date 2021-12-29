@@ -27,10 +27,10 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
             }
             
             if(toUpdate === "remove secondary guest"){
-
+                person.guests = person.guests - 1;
                 console.log(toUpdate, "from update function");
                 
-                person.guests = (person.guests > 0) ? person.guests -1: 0;
+                // person.guests = (person.guests > 0) ? person.guests -1: 0;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)
                 const secondaryGuestName = currentPerson.querySelector('.people-name').value;
                 const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);
@@ -38,7 +38,7 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
                 
                 // console.log(secondaryGuestNameIndex);
                 // console.log(secondaryGuestsNamesList);
-                
+                console.log(secondaryGuestNameIndex);
                 secondaryGuestsNamesList.splice(secondaryGuestNameIndex, 1)
                 
             }
