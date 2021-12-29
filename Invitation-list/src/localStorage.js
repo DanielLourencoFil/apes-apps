@@ -28,6 +28,7 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
             }
 
             if(toUpdate === "remove secondary guest"){
+                person.guests = person.guests -1;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)
                 const secondaryGuestName = currentPerson.querySelector('.people-name').textContent;
                 const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);

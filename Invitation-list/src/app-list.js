@@ -27,10 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
         totalGuestsCounter()
         editPerson(0)
         editPerson(1)
-
         // editSecondaryPerson(1);
-
-        
     } else {
         
         fetch(url).then(response => response.json().then(peopleListAjax => {
@@ -48,10 +45,6 @@ window.addEventListener('DOMContentLoaded', () => {
             editPerson(0)
             editPerson(1)
             // editSecondaryPerson(1);
-
-            
         }));
     }
 });
-
-// editPersonSecondary();

@@ -16,6 +16,9 @@ export function renderPeopleList(dataObj) {
     peopleListTag.innerHTML = '';
     
     people.forEach(person => {
+        const guestsNumber = person['guestsNames'].length;
+        // console.log(guestsNumber);
+        // console.log(person.guests);
         //number for list order and quantity of primary guests
         const personNumber = parseInt(people.indexOf(person)) + 1
         
@@ -26,7 +29,7 @@ export function renderPeopleList(dataObj) {
         <i class="fas fa-times checkbox-denied status-denied"></i>
         </div>
         <span class="people-name">${person.name}</span>
-        <span class="people-guests">${person.guests}</span>
+        <span class="people-guests">${(guestsNumber == 0) ? person.guests : guestsNumber}</span>
         <div class="people-row-btn">
         <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
         <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
