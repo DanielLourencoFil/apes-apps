@@ -82,7 +82,8 @@ export function renderSecondaryGuestsList(person){
             list = person["guestsNames"]
             
         }
-
+console.log(list);
+console.log(peerson.guests);
         list.forEach(guest =>{
 
             // console.log(list);

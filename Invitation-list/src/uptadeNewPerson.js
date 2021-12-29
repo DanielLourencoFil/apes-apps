@@ -14,15 +14,16 @@ export function updateNewPerson(){
         const newPersonName = document.querySelector('[data-input="people"]');
         const alertMessage = "Please, insert the guest name";
         
-        console.log(newGuestsNumber.value);
+        console.log(newGuestsNumber);
         if(e.target == addPersonBtn){
             const newPersonId = idGenerator();
             // console.log(newPersonId);
             const newPersonStatus = 0;
 
             console.log(newPersonName);
-            if(newPersonName.value == ''){
+            if(newPersonName.value == '' || newPersonName.value == alertMessage){
                  emptyInputAlert(newPersonName, alertMessage)
+                
             }
            
             
