@@ -9,8 +9,7 @@ export function getDataLocalStorage() {
 
 export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate) {
     let updatedPeopleList = getDataLocalStorage();
-    console.log(toUpdate, "from update function");
-
+    
     updatedPeopleList.forEach(person => {
         const userId = parseInt(currentPerson.getAttribute('data-id'));
         ;
@@ -19,20 +18,26 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
             if (toUpdate === "status") {
                 person['status'] = parseInt(currentPersonStatus.getAttribute('data-status'));
             }
-
-            if(toUpdate === "remove"){
+            
+            if(toUpdate === "remove primary guest"){
                 console.log(updatedPeopleList.indexOf(person));
                 updatedPeopleList.splice(updatedPeopleList.indexOf(person), 1)
                 
-                console.log('i will remove');
+                // console.log('i will remove');
             }
-
+            
             if(toUpdate === "remove secondary guest"){
-                person.guests = person.guests -1;
+
+                console.log(toUpdate, "from update function");
+                
+                person.guests = (person.guests > 0) ? person.guests -1: 0;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)
-                const secondaryGuestName = currentPerson.querySelector('.people-name').textContent;
+                const secondaryGuestName = currentPerson.querySelector('.people-name').value;
                 const secondaryGuestNameIndex = person['guestsNames'].indexOf(secondaryGuestName);
                 const secondaryGuestsNamesList = updatedPeopleList[primaryGuestIndex]['guestsNames'];
+                
+                // console.log(secondaryGuestNameIndex);
+                // console.log(secondaryGuestsNamesList);
                 
                 secondaryGuestsNamesList.splice(secondaryGuestNameIndex, 1)
                 

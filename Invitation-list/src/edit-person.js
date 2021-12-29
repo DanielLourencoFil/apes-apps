@@ -8,8 +8,12 @@ export function editPerson(indexList){
     
     peopleListTag.addEventListener('click', (e)=>{
         const person = e.target.parentElement.parentElement
-        const personName = person.querySelector('.people-name').textContent;
+       
+       // person.disabled = true;
+
+        const personName = person.querySelector('.people-name').value;
         if(e.target.classList.contains('people-delete-icon')){
+            console.log("deleteeeeeeeeeeeeeeeeeeee");
             if(deletePersonAlert(personName) === true) {
                 deletePerson(person, indexList)
             } 
@@ -17,53 +21,46 @@ export function editPerson(indexList){
 
         }
         if(e.target.classList.contains('people-add-icon')){
-            renderSecondaryGuestsList(e.target)
-            // console.log(e.target, 'add');
+            console.log('iiiiiiiiiiii');
+            const person = e.target.parentElement.parentElement
+            
+        renderSecondaryGuestsList(person)
+        
+        const personNameInput = person.getElementsByClassName('people-name')[0];
+        // console.log(personNameInput[0]);
+        const personName = person.querySelector('.people-name').value;
+        
+        // personNameInput.classList.add('show-input-name')
+        // personNameInput.disabled = false;
+        console.log(personNameInput);
+        console.log(personNameInput.disabled);
+        // personNameInput.focus()
+
 
         }
     })
 }
 
-// CAN BE DELETED
-// export function editSecondaryPerson(indexList){
-//     const peopleListTag = document.getElementsByClassName('people-list')[indexList];
-    
-//     peopleListTag.addEventListener('click', (e)=>{
-//         const person = e.target.parentElement.parentElement;
-//         const personName = person.querySelector('.people-name').textContent;
-//         // console.log(person);
-        
-//         if(e.target.classList.contains('people-delete-icon')){
-//             if(deletePersonAlert(personName) === true) {
-//                 deletePerson(person, indexList, e.target )
-//                 console.log(e.target);
-//             } 
-            
-
-//         }
-//         if(e.target.classList.contains('people-add-icon')){
-//             renderSecondaryGuestsList(e.target)
-//             // console.log(e.target, 'add');
-
-//         }
-//     })
-// }
 
 function deletePerson(person, indexList){
-    console.log(person, 'from secondary');
+    // console.log(person, 'from secondary');
     let toUpDate = "";
     // console.log(indexList);
+    
     if(indexList == 0){
-        toUpDate = "remove"
+        toUpDate = "remove primary guest"
     }
     if(indexList == 1){
         toUpDate = "remove secondary guest"
+        console.log(person, "delete", toUpDate)
+        updateLocalStorage(person, null, toUpDate)
+        renderSecondaryGuestsList(person)
     }
-    console.log(indexList, toUpDate);
+    // console.log(indexList, toUpDate);
     person.remove();
     updateLocalStorage(person, null, toUpDate)
-    renderPeopleList(getDataLocalStorage)
     totalGuestsCounter()
+    renderPeopleList(getDataLocalStorage)
 }
 
 function editGuests(){
@@ -92,3 +89,30 @@ export function closeSecondaryGuestModal(modal){
         }
     })
 }
+
+
+
+// CAN BE DELETED
+// export function editSecondaryPerson(indexList){
+//     const peopleListTag = document.getElementsByClassName('people-list')[indexList];
+    
+//     peopleListTag.addEventListener('click', (e)=>{
+//         const person = e.target.parentElement.parentElement;
+//         const personName = person.querySelector('.people-name').textContent;
+//         // console.log(person);
+        
+//         if(e.target.classList.contains('people-delete-icon')){
+//             if(deletePersonAlert(personName) === true) {
+//                 deletePerson(person, indexList, e.target )
+//                 console.log(e.target);
+//             } 
+            
+
+//         }
+//         if(e.target.classList.contains('people-add-icon')){
+//             renderSecondaryGuestsList(e.target)
+//             // console.log(e.target, 'add');
+
+//         }
+//     })
+// }

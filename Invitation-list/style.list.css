@@ -152,7 +152,11 @@ button {
 	background-color: inherit;
 	font-size: 1rem;
 	text-transform: capitalize;
+	/* margin-left: 1rem; */
 	width: 65%;
+}
+.show-input-name {
+	background-color: var(--color-white) !important;
 }
 /* .input-disabled:disabled{} */
 
@@ -291,7 +295,7 @@ button {
 }
 .people-row-secondary {
 	display: grid;
-	grid-template-columns: 0.5fr 4fr 2fr;
+	grid-template-columns: 0.5fr 4fr 1fr;
 	justify-content: space-between;
 	align-items: left;
 }

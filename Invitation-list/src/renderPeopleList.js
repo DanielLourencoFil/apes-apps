@@ -6,21 +6,21 @@ import { closeSecondaryGuestModal } from './edit-person.js';
 
 
 export function renderPeopleList(dataObj) {
-    let people = dataObj;
+    let peopleList = dataObj;
     if (typeof dataObj == "function"){
-        people = getDataLocalStorage();
+        peopleList = getDataLocalStorage();
     }
         
     const peopleListTag = document.getElementsByClassName('people-list')[0];
   
     peopleListTag.innerHTML = '';
     
-    people.forEach(person => {
+    peopleList.forEach(person => {
         const guestsNumber = person['guestsNames'].length;
         // console.log(guestsNumber);
         // console.log(person.guests);
         //number for list order and quantity of primary guests
-        const personNumber = parseInt(people.indexOf(person)) + 1
+        const personNumber = parseInt(peopleList.indexOf(person)) + 1
         
         const userLi = `<li data-id="${person.id}" class="people-row">
         <span class="person-number">${personNumber}.</span>
@@ -44,38 +44,44 @@ export function renderSecondaryGuestsList(person){
     const id = person.getAttribute('data-id')
     const peopleList = getDataLocalStorage();
     const secondaryGuestList = document.querySelector('.secondary-guests-list')
-    
+    console.log(secondaryGuestList);
+    //secondary guest list clean content
+    // secondaryGuestList.innerHTML = '';
+    secondaryGuestList.innerHTML = "";
+
     //show secondary guests modal
     secondaryGuestList.parentElement.classList.add('secondary-guests-show') 
-    
+    // debugger
     peopleList.forEach(person =>{
         if(person.id == id){
         // const secondaryGuestId =  idGenerator();   
-        let personNumber = 1;
+                
+        const secondaryGuestListLength = person["guestsNames"].length;
         
-        const emptySecondaryGuestList = person["guestsNames"].length == 0;
-
         let list = [];
         
-        //if guest list is empty create a guest array of menssages with the num of guests informed
+        //if guest list is empty create a guest array of menssages with the number of guests informed
         //if ZERO, create array with ONE message  
-        if(emptySecondaryGuestList){
-            const messageEmptyList = "add guest name"; 
+        if(secondaryGuestListLength == 0){
             const personGuestsNumber = person['guests'] || 1
             for(let i = 0; i < personGuestsNumber; i++){
+                const messageEmptyList = `add guest name ${i+1}`; 
                 list.push(messageEmptyList)
             }
         }
         else{
             list = person["guestsNames"]
+            
         }
 
         list.forEach(guest =>{
-                      
+
+            // console.log(list);
+            const personNumber = parseInt(list.indexOf(guest)) + 1;
             const secondaryGuestLi = 
             `<li data-id="${person.id}" class="people-row-secondary">
-            <span class="person-number">${personNumber++}.</span>
-            <input class="people-name" value="${guest}" disabled>
+            <span class="person-number">${personNumber}.</span>
+            <input class="people-name" value="${guest}">
             <div class="people-row-btn people-secondary-btn">
             <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
             <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
