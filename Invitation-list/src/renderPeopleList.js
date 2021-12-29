@@ -28,7 +28,7 @@ export function renderPeopleList(dataObj) {
         <i class="fas fa-check checkbox-confirmed status-confirmed"></i>
         <i class="fas fa-times checkbox-denied status-denied"></i>
         </div>
-        <span class="people-name">${person.name}</span>
+        <input class="people-name" value="${person.name}" disabled>
         <span class="people-guests">${(guestsNumber == 0) ? person.guests : guestsNumber}</span>
         <div class="people-row-btn">
         <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
@@ -75,7 +75,7 @@ export function renderSecondaryGuestsList(person){
             const secondaryGuestLi = 
             `<li data-id="${person.id}" class="people-row-secondary">
             <span class="person-number">${personNumber++}.</span>
-            <span class="people-name">${guest}</span>
+            <input class="people-name" value="${guest}" disabled>
             <div class="people-row-btn people-secondary-btn">
             <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
             <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>

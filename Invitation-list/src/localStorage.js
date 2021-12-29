@@ -37,7 +37,6 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
                 secondaryGuestsNamesList.splice(secondaryGuestNameIndex, 1)
                 
             }
-            
         }
         
     //    console.log(updatedPeopleList);

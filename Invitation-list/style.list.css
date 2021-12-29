@@ -147,6 +147,14 @@ button {
 	/* gap: 5rem; */
 	text-align: left;
 }
+.people-name {
+	border: transparent;
+	background-color: inherit;
+	font-size: 1rem;
+	text-transform: capitalize;
+	width: 65%;
+}
+/* .input-disabled:disabled{} */
 
 /*CHECKBOX*/
 .checkbox {
