@@ -10,8 +10,10 @@ export function editPerson(indexList){
         let person = e.target.parentElement.parentElement;
         
         let personName = person.getElementsByClassName('people-name')[0].value;
+        
         if(e.target.classList.contains('people-delete-icon')){
             if(deletePersonAlert(personName) === true) {
+               
                 deletePerson(person, indexList)
             } 
         }
@@ -23,21 +25,18 @@ export function editPerson(indexList){
         if(indexList == 0){
         renderSecondaryGuestsList(person)
         }    
-        
-        let counterLockData = 0
-if(e.target){
-    counterLockData++
-}
-
-        console.log(counterLockData);
-
+// console.log(indexList);
         person = e.target.parentElement.parentElement;
-                        
         let personNameInput = person.getElementsByClassName('people-name')[0];
         let personName = personNameInput.value; 
+
+        let personId = person.getAttribute('data-id');
+        // let personSecondaryId = person.getAttribute('data-id')
         personNameInput.disabled = false;
         personNameInput.focus();
         
+        // console.log(personId);
+        // console.log(personSecondaryId);
 
         // console.log(person, indexList);
         
@@ -51,19 +50,25 @@ if(e.target){
 
 function deletePerson(person, indexList){
     let toUpDate = "";
-    
+    console.log(person);
+    console.log(indexList);
     if(indexList == 0){
         toUpDate = "remove primary guest"
         updateLocalStorage(person, null, toUpDate)
     }
     if(indexList == 1){
         toUpDate = "remove secondary guest"
-        // console.log(person, "delete", toUpDate)
-        updateLocalStorage(person, null, toUpDate)
+        console.log(person, "delete", toUpDate)
+        person.remove();
+        console.log(person);
+        const secondaryGuestId = person.querySelector('.people-name').getAttribute('data-id');
+        console.log(secondaryGuestId);
+        updateLocalStorage(person, secondaryGuestId, toUpDate)
         renderSecondaryGuestsList(person)
     }
     // console.log(indexList, toUpDate);
     person.remove();
+    // renderSecondaryGuestsList(person)
     totalGuestsCounter()
     renderPeopleList(getDataLocalStorage)
 }

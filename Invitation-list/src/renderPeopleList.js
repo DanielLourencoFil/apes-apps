@@ -43,11 +43,8 @@ export function renderPeopleList(dataObj) {
 export function renderSecondaryGuestsList(person){
     const id = person.getAttribute('data-id')
     const peopleList = getDataLocalStorage();
-    // const secondaryGuestList = document.querySelector('.secondary-guests-list')
     const secondaryGuestList = document.getElementsByClassName('secondary-guests-list')[0]
-    // console.log(secondaryGuestList);
-    //secondary guest list clean content
-    // secondaryGuestList.innerHTML = '';
+    
     secondaryGuestList.innerHTML = "";
 
     //show secondary guests modal
@@ -73,17 +70,16 @@ export function renderSecondaryGuestsList(person){
         //if guest list is empty create a guest array of menssages with the number of guests informed
         //if ZERO, create array with ONE message  
         if(secondaryGuestListLength == 0){
-            const personGuestsNumber = person['guests'] || 1
+            // const personGuestsNumber = person['guests'] || 1
+            const personGuestsNumber = (person['guests'] > 1) ? person['guests'] : 1;
             for(let i = 0; i < personGuestsNumber; i++){
-                const messageEmptyList = `add guest name ${i+1}`; 
+                const messageEmptyList = {"name":`add guest name ${i+1}` }; 
                 list.push(messageEmptyList)
             }
         }
         else{
             list = person["guestsNames"]
-            
         }
-
         list.forEach(guest =>{
 
             // console.log(list);
@@ -91,10 +87,10 @@ export function renderSecondaryGuestsList(person){
             secondaryGuestLi += 
             `<li data-id="${person.id}" class="people-row-secondary">
             <span class="person-number">${personNumber}.</span>
-            <input class="people-name" type="text" value="${guest}" disabled="true">
+            <input class="people-name" type="text" value="${guest.name}" disabled="true" data-id="${guest.idGuest}">
             <div class="people-row-btn people-secondary-btn">
-            <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${person.id}"></i>
-            <i class="fas fa-user-minus people-delete-icon data-id="${person.id}"></i>
+            <i class="fa fa-user-plus people-add-icon" aria-hidden="true" data-id="${guest.idGuest}"></i>
+            <i class="fas fa-user-minus people-delete-icon data-id="${guest.idGuest}"></i>
             </div>
             </li>`;
 

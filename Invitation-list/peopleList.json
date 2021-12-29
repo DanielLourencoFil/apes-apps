@@ -1,37 +1,50 @@
 [
     {
-        "name": "john",
-        "id": 1,
-        "guests": 4,
-        "guestsNames": ["Danny", "Carla", "Peter"],
-        "status": 1
-    },
-    {
-        "name": "steve",
-        "id": 2,
-        "guests": 4,
-        "guestsNames": ["Jonny", "Karl", "Dimitry"],
-        "status": 0    
-    },
-    {
         "name": "mary",
         "id": 3,
-        "guests": 2,
-         "guestsNames": ["John"],
+        "guests": 3,
+         "guestsNames": [
+             {"name": "John",
+               "idGuest": 111 
+            },
+            {"name": "Peter",
+                "idGuest": 292 
+             }
+            ],
         "status": 0    
 },
     {
         "name": "mike",
         "id": 4,
-        "guests": 4,
-         "guestsNames": ["Patricia", "Karmen", "Bill"],
+        "guests": 3,
+        "guestsNames": [
+            {"name": "Johnny",
+              "idGuest": 263 
+           },
+           {"name": "Doe",
+               "idGuest": 235 
+            }
+           ],
         "status": 0    
 },
     {
         "name": "jenny",
         "id": 5,
         "guests": 5,
-         "guestsNames": ["Ivory", "Anderson", "Billy", "Mick"],
+        "guestsNames": [
+            {"name": "Carl",
+              "idGuest": 456 
+           },
+           {"name": "Aristotle",
+               "idGuest": 278 
+            },
+            {"name": "Trimm",
+                  "idGuest": 789 
+            },
+            {"name": "Jane",
+                   "idGuest": 178 
+            }
+        ],
         "status": 0   
 }
 
