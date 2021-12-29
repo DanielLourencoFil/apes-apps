@@ -28,7 +28,8 @@ export function updateLocalStorage(currentPerson, currentPersonStatus, toUpdate)
             
             if(toUpdate === "remove secondary guest"){
                 person.guests = person.guests - 1;
-                console.log(toUpdate, "from update function");
+               
+                // console.log(toUpdate, "from update function");
                 
                 // person.guests = (person.guests > 0) ? person.guests -1: 0;
                 const primaryGuestIndex = updatedPeopleList.indexOf(person)

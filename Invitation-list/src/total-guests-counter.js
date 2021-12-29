@@ -6,7 +6,7 @@ export function totalGuestsCounter(){
 
     peopleList.forEach(guest => {
     if(guest['status'] != 2){
-        totalGuestsNumber += guest['guests'] + 1;
+        totalGuestsNumber += guest['guests'];
     }
     });
     
