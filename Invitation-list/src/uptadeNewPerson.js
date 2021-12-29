@@ -17,7 +17,7 @@ export function updateNewPerson(){
         console.log(newGuestsNumber.value);
         if(e.target == addPersonBtn){
             const newPersonId = idGenerator();
-            console.log(newPersonId);
+            // console.log(newPersonId);
             const newPersonStatus = 0;
 
             console.log(newPersonName);
@@ -30,7 +30,7 @@ export function updateNewPerson(){
                 updatedPeopleList.push({
                 "name": newPersonName.value,
                 "id": newPersonId,
-                "guests": (newGuestsNumber.value != "") ? parseInt(newGuestsNumber.value): 0,
+                "guests": (newGuestsNumber.value == "") ? 1 : parseInt(newGuestsNumber.value),
                 "guestsNames": [],
                 "status": newPersonStatus
             })
