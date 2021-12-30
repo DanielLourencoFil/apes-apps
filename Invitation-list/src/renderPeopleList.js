@@ -58,10 +58,10 @@ export function renderSecondaryGuestsList(person){
            
             const secondaryGuestListLength = person["guestsNames"].length;
             
-            let     guestsList = [];
+            let guestsList = [];
             let secondaryNewGuestsTemporaryList = [];
             
-    //------------- First part of HTML list : contains only primary guest name values
+    //------------- First part of HTML list : contains only primary guest values
             let guestsListHTML = `<li data-id="${person.id}" class="people-row-secondary">
             <span class="person-number">${1}.</span>
             <input class="people-name" value="${person.name}"  type="text" disabled="true" data-id="${person.id}">
@@ -79,20 +79,21 @@ export function renderSecondaryGuestsList(person){
                     // if (YES/TRUE) it calls updateLocalStorage function by the end of "secondaryNewGuestsTemporaryList" generation
                     // It is necessary for the new secondary guests (whitout a name yeat) need a id  
                 counter++
-                if(counter > 1){
-                    counter = 0
-                }
+                // if(counter > 1){
+                //     // counter = 0
+                // }
                 let messageEmptyList = {"name":`add guest's name` }; 
                 // const personGuestsNumber = person['guests'] || 1
                 const personGuestsNumber = (person['guests'] > 1) ? person['guests'] : 1;
                 console.log(personGuestsNumber);
-                if(personGuestsNumber > 2){
-                    for(let i = 1; i < personGuestsNumber-1; i++){
+                if(personGuestsNumber >= 2){
+                    for(let i = 1; i < personGuestsNumber; i++){
                         messageEmptyList = {"name":`add guest's name ${i}` }
                         guestsList.push(messageEmptyList)
                     }
                 }
-                guestsList.push(messageEmptyList)
+               //guestsList.push(messageEmptyList)
+                
 
     }
     //------------- if guest list exist, calls list of guests from primary guest 
@@ -100,9 +101,16 @@ export function renderSecondaryGuestsList(person){
                 guestsList = person["guestsNames"]
             }
             console.log(counter, 'counter');
-            guestsList.forEach(guest =>{
-                let newGuestId = idGenerator()
-                
+            
+    //------------- Second part of HTML list : contains only secondary guest values
+        if(counter == 1 && person.guests == 1 ){
+            secondaryGuestList.innerHTML = guestsListHTML;
+            console.log('yesssssssss');
+        } 
+            
+        guestsList.forEach(guest =>{
+            let newGuestId = idGenerator()
+            console.log(guest);
             let personNumber = parseInt(guestsList.indexOf(guest)) + 2;
             guestsListHTML += 
             `<li data-id="${person.id}" class="people-row-secondary">
@@ -113,10 +121,11 @@ export function renderSecondaryGuestsList(person){
             <i class="fas fa-user-minus people-delete-icon data-id="${guest.idGuest || newGuestId}"></i>
             </div>
             </li>`;
-            secondaryNewGuestsTemporaryList.push({"name": "add guest name", "idGuest": newGuestId})
+            secondaryNewGuestsTemporaryList.push({guest, "idGuest": newGuestId})
             secondaryGuestList.innerHTML = guestsListHTML;
             // console.log(guestsListHTML);
         })
+
     //------------- if guest list is NEW (empty) : counter == 1 (YES/TRUE)  update LocalStorage 
     console.log(counter);
         if(counter == 1 && secondaryGuestListLength == 0){
