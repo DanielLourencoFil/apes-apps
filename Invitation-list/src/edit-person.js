@@ -2,6 +2,7 @@ import { renderPeopleList, renderSecondaryGuestsList} from "./renderPeopleList.j
 import { getDataLocalStorage, updateLocalStorage } from "./localStorage.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
 
+let callEditBtnCounter = 0;
 
 export function editPerson(indexList){
     let peopleListTag = document.getElementsByClassName('people-list')[indexList];
@@ -10,7 +11,8 @@ export function editPerson(indexList){
         let person = e.target.parentElement.parentElement;
         
         let personName = person.getElementsByClassName('people-name')[0].value;
-        
+
+        //------ DELETE Button pressed   ------// 
         if(e.target.classList.contains('people-delete-icon')){
             if(deletePersonAlert(personName) === true) {
                
@@ -18,33 +20,47 @@ export function editPerson(indexList){
             } 
         }
         
+//------    EDIT Button pressed   ------// 
         if(e.target.classList.contains('people-add-icon')){
-        const toUpDate = "edit guest";       
-        
-        // CALL function only if calling is made from primary guest list : avoid bug - li is freezed! 
-        if(indexList == 0){
-        renderSecondaryGuestsList(person)
-        }    
-// console.log(indexList);
-        person = e.target.parentElement.parentElement;
-        let personNameInput = person.getElementsByClassName('people-name')[0];
-        let personName = personNameInput.value; 
+            const toUpDate = "edit guest";  
 
-        let personId = person.getAttribute('data-id');
-        // let personSecondaryId = person.getAttribute('data-id')
+            // CALL function only if calling is made from primary guest list : avoid bug - li is freezed! 
+        if(indexList == 0){
+               renderSecondaryGuestsList(person)
+        }    
+        
+     person = e.target.parentElement.parentElement;
+    let personNameInput = person.getElementsByClassName('people-name')[0];
+    let personName = personNameInput.value; 
+
+    if(indexList == 1 ){
+        callEditBtnCounter++;
+
+        if(callEditBtnCounter == 1){
         personNameInput.disabled = false;
         personNameInput.focus();
-        
-        // console.log(personId);
-        // console.log(personSecondaryId);
-
-        // console.log(person, indexList);
-        
-        // console.log(personName);
-        updateLocalStorage(person, personName, toUpDate);
-
         }
-    })
+        
+        if(callEditBtnCounter == 2){
+            personNameInput.disabled = true;
+            personNameInput.blur();
+            callEditBtnCounter = 0
+
+            let primaryGuestId = parseInt(person.getAttribute('data-id'));
+            let secondaryGuestId = parseInt(person.querySelector('.people-name').getAttribute('data-id'))
+            let guestsData = [];
+            guestsData.push(personName, primaryGuestId, secondaryGuestId);
+            
+            //get unique values: array with 3 diferent values = secondary guest edit; 
+            //with 2 different values = primary guest edit
+            guestsData =  [...new Set(guestsData)];
+
+            updateLocalStorage(person, guestsData, toUpDate);
+            renderPeopleList(getDataLocalStorage)
+        }
+    }
+}
+})
 }
 
 
@@ -58,17 +74,16 @@ function deletePerson(person, indexList){
     }
     if(indexList == 1){
         toUpDate = "remove secondary guest"
-        console.log(person, "delete", toUpDate)
+
         person.remove();
-        console.log(person);
+
         const secondaryGuestId = person.querySelector('.people-name').getAttribute('data-id');
-        console.log(secondaryGuestId);
+
         updateLocalStorage(person, secondaryGuestId, toUpDate)
         renderSecondaryGuestsList(person)
     }
-    // console.log(indexList, toUpDate);
     person.remove();
-    // renderSecondaryGuestsList(person)
+
     totalGuestsCounter()
     renderPeopleList(getDataLocalStorage)
 }
@@ -104,30 +119,3 @@ export function closeSecondaryGuestModal(modal){
         }
     })
 }
-
-
-
-// CAN BE DELETED
-// export function editSecondaryPerson(indexList){
-//     const peopleListTag = document.getElementsByClassName('people-list')[indexList];
-    
-//     peopleListTag.addEventListener('click', (e)=>{
-//         const person = e.target.parentElement.parentElement;
-//         const personName = person.querySelector('.people-name').textContent;
-//         // console.log(person);
-        
-//         if(e.target.classList.contains('people-delete-icon')){
-//             if(deletePersonAlert(personName) === true) {
-//                 deletePerson(person, indexList, e.target )
-//                 console.log(e.target);
-//             } 
-            
-
-//         }
-//         if(e.target.classList.contains('people-add-icon')){
-//             renderSecondaryGuestsList(e.target)
-//             // console.log(e.target, 'add');
-
-//         }
-//     })
-// }

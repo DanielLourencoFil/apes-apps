@@ -1,5 +1,6 @@
 export function idGenerator(){
-    return Date.now();
+    
+    return  parseInt(Math.random()*10000);
     
 };
 
