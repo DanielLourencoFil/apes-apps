@@ -43,12 +43,15 @@ export function editPerson(indexList){
                 if(callEditBtnCounter == 1){
                 personNameInput.disabled = false;
                 personNameInput.focus();
+                e.target.classList.add('people-add-icon-active')
                 inputOnFocusDisableAddGuestBtn(callEditBtnCounter)
                 }
                 
                 if(callEditBtnCounter == 2){
                     personNameInput.disabled = true;
                     personNameInput.blur();
+                    e.target.classList.remove('people-add-icon-active')
+
                     
                     let primaryGuestId = parseInt(person.getAttribute('data-id'));
                     let secondaryGuestId = parseInt(person.querySelector('.people-name').getAttribute('data-id'))
@@ -64,7 +67,7 @@ export function editPerson(indexList){
                     renderSecondaryGuestsList(person)
                     
                     inputOnFocusDisableAddGuestBtn(callEditBtnCounter)
-                    
+                // counter must be set to Zero only after inputOnFocusDisableAddGuestBtn() call 
                     callEditBtnCounter = 0
                 }
             }
@@ -119,6 +122,16 @@ export function closeSecondaryGuestModal(modal){
     const closeBtn = modal.parentElement.getElementsByClassName('close-secondary-modal')[0]
     closeBtn.addEventListener('click', (e)=>{
         if(e.target.classList.contains('close-secondary-modal')){
+            //hide secondary guests modal
+            modal.parentElement.classList.remove('secondary-guests-show')
+            
+            //clean secondary guest list content
+            modal.innerHTML = ''
+
+        }
+    })
+    window.addEventListener("keydown", (e)=>{
+        if(e.key == 'Escape'){
             //hide secondary guests modal
             modal.parentElement.classList.remove('secondary-guests-show')
             

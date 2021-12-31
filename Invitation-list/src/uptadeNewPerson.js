@@ -49,6 +49,10 @@ export function updateNewPerson(){
             
             emptyInputAlert(newPersonName, alertMessage)
         }
+        if(!newPersonName.value){
+           // what happens if enter or escape are pressed down 
+           // emptyInputAlert(newPersonName, alertMessage)
+        }
 
         setLocalStorage(updatedPeopleList)
         totalGuestsCounter()

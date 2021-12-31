@@ -210,6 +210,10 @@ button {
 .people-add-icon:hover {
 	color: var(--color-alert-confirmed-1);
 }
+.people-add-icon-active {
+	font-size: 1rem;
+	color: var(--color-alert-confirmed-1);
+}
 
 .people-row-btn {
 	display: flex;
