@@ -1,6 +1,7 @@
 import { renderPeopleList, renderSecondaryGuestsList} from "./renderPeopleList.js";
 import { getDataLocalStorage, updateLocalStorage } from "./localStorage.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
+import { inputOnFocusDisableAddGuestBtn } from "./enable-disable-features.js";
 
 let callEditBtnCounter = 0;
 
@@ -42,13 +43,13 @@ export function editPerson(indexList){
                 if(callEditBtnCounter == 1){
                 personNameInput.disabled = false;
                 personNameInput.focus();
+                inputOnFocusDisableAddGuestBtn(callEditBtnCounter)
                 }
                 
                 if(callEditBtnCounter == 2){
                     personNameInput.disabled = true;
                     personNameInput.blur();
-                    callEditBtnCounter = 0
-
+                    
                     let primaryGuestId = parseInt(person.getAttribute('data-id'));
                     let secondaryGuestId = parseInt(person.querySelector('.people-name').getAttribute('data-id'))
                     let guestsData = [];
@@ -57,13 +58,18 @@ export function editPerson(indexList){
                     //get unique values: array with 3 diferent values = secondary guest edit; 
                     //with 2 different values = primary guest edit
                     guestsData =  [...new Set(guestsData)];
-
+                    
                     updateLocalStorage(person, guestsData, toUpDate);
                     renderPeopleList(getDataLocalStorage)
                     renderSecondaryGuestsList(person)
+                    
+                    inputOnFocusDisableAddGuestBtn(callEditBtnCounter)
+                    
+                    callEditBtnCounter = 0
                 }
             }
         }
+        inputOnFocusDisableAddGuestBtn()
     })
 }
 

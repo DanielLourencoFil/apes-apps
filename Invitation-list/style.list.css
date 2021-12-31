@@ -325,3 +325,7 @@ button {
 .extra-guest-btn:hover {
 	background-color: var(--color-white);
 }
+.extra-guest-btn:disabled {
+	cursor: not-allowed;
+	color: var(--color-alert-denied-1);
+}
