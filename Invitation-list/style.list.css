@@ -295,7 +295,7 @@ button {
 }
 .secondary-guests-show {
 	opacity: 1;
-	z-index: 999;
+	z-index: 9999;
 }
 .people-row-secondary {
 	display: grid;

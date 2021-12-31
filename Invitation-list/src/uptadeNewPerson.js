@@ -1,6 +1,6 @@
 import { idGenerator } from "./id-generator.js";
 import { getDataLocalStorage, setLocalStorage } from "./localStorage.js";
-import {renderPeopleList} from './renderPeopleList.js'
+import {renderNewSecondaryGuest, renderPeopleList} from './renderPeopleList.js'
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import {emptyInputAlert} from "./empty-input.js"
 
@@ -53,7 +53,27 @@ export function updateNewPerson(){
         setLocalStorage(updatedPeopleList)
         totalGuestsCounter()
     })
+
+// new secondary guest
+
+let modalSecondaryGuests = document.getElementsByClassName('secondary-guests-container')[0]
+    
+    modalSecondaryGuests.addEventListener('click', (e)=>{
+    
+        // const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
+        
+        if(e.target.classList.contains('extra-guest-btn')){
+        const currentPerson = e.target.parentElement.getElementsByClassName('secondary-guests-list')[0];
+        addNewSecondaryGuest(currentPerson)
+    }
+})
+
 }
 
 
+function addNewSecondaryGuest(currentPerson){
+    const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
+    renderNewSecondaryGuest(currentPerson)
+    
 
+}
