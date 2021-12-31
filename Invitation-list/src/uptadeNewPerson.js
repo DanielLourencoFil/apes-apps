@@ -3,6 +3,7 @@ import { getDataLocalStorage, setLocalStorage } from "./localStorage.js";
 import {renderNewSecondaryGuest, renderPeopleList} from './renderPeopleList.js'
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import {emptyInputAlert} from "./empty-input.js"
+import { inputKeyDown } from "./enable-disable-features.js";
 
 
 export function updateNewPerson(){
@@ -48,10 +49,11 @@ export function updateNewPerson(){
          if(newPersonName.value){
             
             emptyInputAlert(newPersonName, alertMessage)
+            inputKeyDown(); 
         }
         if(!newPersonName.value){
-           // what happens if enter or escape are pressed down 
-           // emptyInputAlert(newPersonName, alertMessage)
+           // what happens if enter or escape are pressed down
+           inputKeyDown(); 
         }
 
         setLocalStorage(updatedPeopleList)
@@ -78,6 +80,4 @@ let modalSecondaryGuests = document.getElementsByClassName('secondary-guests-con
 function addNewSecondaryGuest(currentPerson){
     const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
     renderNewSecondaryGuest(currentPerson)
-    
-
 }
