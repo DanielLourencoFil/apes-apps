@@ -1,3 +1,5 @@
+import { totalGuestsCounter } from "./total-guests-counter.js";
+
 //set data in localStorage
 export function setLocalStorage(dataObj){
     localStorage.setItem('peopleList', JSON.stringify(dataObj));
@@ -97,5 +99,6 @@ export function updateLocalStorage(currentPerson, currentPersonData, toUpDate) {
             }
         }
         setLocalStorage(updatedPeopleList)
+        totalGuestsCounter()
     });
 }
