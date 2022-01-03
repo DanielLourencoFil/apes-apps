@@ -8,76 +8,102 @@ import { inputKeyDown } from "./enable-disable-features.js";
 
 export function updateNewPerson(){
     const addPeopleForm = document.getElementsByClassName('add-people-container')[0]
+    const addPersonBtn = document.querySelector('.add-people-btn')
+    
+    const newGuestsNumber = document.querySelector('[data-input="guests"]') || 0;
+    const newPersonName = document.querySelector('[data-input="people"]');
+    const alertMessage = "Please, insert the guest name";
+    
+    
+    addPeopleForm.addEventListener("keydown", (e)=>{
+        let updatedPeopleList = getDataLocalStorage();
+        if(e.key === 'Enter' && newGuestsNumber.value == ''){
+            console.log('oooooooooooooh');
+            emptyInputAlert(newPersonName, alertMessage)              
+        }
+
+        if(e.key === 'Enter' && newGuestsNumber.value != ''){
+            
+            console.log('ihhhhhhhhhhhhhhhhhh');
+         addPrimaryNewGuest(newPersonName, newGuestsNumber, updatedPeopleList, alertMessage)                 
+        }
+        
+        setLocalStorage(updatedPeopleList)
+        totalGuestsCounter()
+    })
+    
     addPeopleForm.addEventListener('click',(e)=>{
         let updatedPeopleList = getDataLocalStorage();
-        const addPersonBtn = document.querySelector('.add-people-btn')
 
-        const newGuestsNumber = document.querySelector('[data-input="guests"]') || 0;
-        const newPersonName = document.querySelector('[data-input="people"]');
-        const alertMessage = "Please, insert the guest name";
-        
-        console.log(newGuestsNumber);
         if(e.target == addPersonBtn){
-            const newPersonId = idGenerator();
-
-            const newPersonStatus = 0;
-
-            console.log(newPersonName);
-            
-            if(newPersonName.value == '' || newPersonName.value == alertMessage){
-                 emptyInputAlert(newPersonName, alertMessage)
-            }
-            
-            else {
-                updatedPeopleList.push({
-                "name": newPersonName.value,
-                "id": newPersonId,
-                "guests": (newGuestsNumber.value == "") ? 1 : parseInt(newGuestsNumber.value),
-                "guestsNames": [],
-                "status": newPersonStatus
-            })
-            
-            // console.log('from new person function');
-            renderPeopleList(updatedPeopleList)
-            
-            newPersonName.value = ""
-            newGuestsNumber.value = ""
-        }
-            
+            addPrimaryNewGuest(newPersonName, newGuestsNumber, updatedPeopleList, alertMessage)
         }
          //clean input field if it has a alert message
          if(newPersonName.value){
             
             emptyInputAlert(newPersonName, alertMessage)
-            inputKeyDown(); 
+            inputKeyDown(addPeopleForm); 
         }
         if(!newPersonName.value){
            // what happens if enter or escape are pressed down
-           inputKeyDown(); 
+           inputKeyDown(addPeopleForm); 
         }
 
         setLocalStorage(updatedPeopleList)
         totalGuestsCounter()
     })
 
-// new secondary guest
+      //clean input field if it has a alert message
+      if(newPersonName.value){
+            
+        emptyInputAlert(newPersonName, alertMessage)
+        inputKeyDown(addPeopleForm); 
+    }
+    if(!newPersonName.value){
+       // what happens if enter or escape are pressed down
+       inputKeyDown(addPeopleForm); 
+    }
 
+//------------ new secondary guest
 let modalSecondaryGuests = document.getElementsByClassName('secondary-guests-container')[0]
     
-    modalSecondaryGuests.addEventListener('click', (e)=>{
-    
-        // const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
-        
-        if(e.target.classList.contains('extra-guest-btn')){
-        const currentPerson = e.target.parentElement.getElementsByClassName('secondary-guests-list')[0];
-        addNewSecondaryGuest(currentPerson)
-    }
-})
-
+        modalSecondaryGuests.addEventListener('click', (e)=>{
+            
+            if(e.target.classList.contains('extra-guest-btn')){
+            const currentPerson = e.target.parentElement.getElementsByClassName('secondary-guests-list')[0];
+            addNewSecondaryGuest(currentPerson)
+        }
+    })
 }
 
+function addPrimaryNewGuest(inputName, inputNumber, updatePeopleList, alertMessage){
+
+    const newPersonId = idGenerator();
+
+    const newPersonStatus = 0;
+    
+    if(inputName.value == '' || inputName.value == alertMessage){
+            emptyInputAlert(inputName, alertMessage)
+    }
+    
+    else {
+            updatePeopleList.push({
+            "name": inputName.value,
+            "id": newPersonId,
+            "guests": (inputNumber.value == "") ? 1 : parseInt(inputNumber.value),
+            "guestsNames": [],
+            "status": newPersonStatus
+        })
+    
+        renderPeopleList(updatePeopleList)
+        
+        inputName.value = ""
+        inputNumber.value = ""
+    }
+}
 
 function addNewSecondaryGuest(currentPerson){
     const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
     renderNewSecondaryGuest(currentPerson)
 }
+

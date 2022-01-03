@@ -14,8 +14,8 @@ export function editPerson(indexList){
     peopleListTag.addEventListener('click', (e)=>{
         
         let person = e.target.parentElement.parentElement;
-        
         let personName = person.getElementsByClassName('people-name')[0].value;
+        let personNameInput = person.getElementsByClassName('people-name')[0];
 
         //------ DELETE Button clicked   ------// 
         if(e.target.classList.contains('people-delete-icon')){
@@ -23,7 +23,7 @@ export function editPerson(indexList){
                 deletePerson(person, indexList)
             } 
         }
-        
+      
         //------    EDIT Button clicked   ------// 
             if(e.target.classList.contains('people-add-icon')){
                 const toUpDate = "edit guest";  
@@ -31,12 +31,16 @@ export function editPerson(indexList){
                 // CALL function only if calling is made from primary guest list : avoid bug - li is freezed! 
             if(indexList == 0){
                 renderSecondaryGuestsList(person)
-            }    
+            }
+             
             
             person = e.target.parentElement.parentElement;
-            let personNameInput = person.getElementsByClassName('people-name')[0];
-            let personName = personNameInput.value; 
-
+            personNameInput = person.getElementsByClassName('people-name')[0];
+            personName = personNameInput.value; 
+            // let personNameInput = person.getElementsByClassName('people-name')[0];
+            // let personName = personNameInput.value; 
+          
+            
             if(indexList == 1 ){
             callEditBtnCounter++;
 
@@ -45,8 +49,9 @@ export function editPerson(indexList){
                 personNameInput.focus();
                 e.target.classList.add('people-add-icon-active')
                 inputOnFocusDisableAddGuestBtn(callEditBtnCounter)
-                }
-                
+              
+            }
+            
                 if(callEditBtnCounter == 2){
                     personNameInput.disabled = true;
                     personNameInput.blur();
@@ -72,9 +77,41 @@ export function editPerson(indexList){
                 }
             }
         }
+        // cancel inputName and edit styles if click event is not related with edit action 
+        if(!e.target.classList.contains('people-name') && !e.target.classList.contains('people-add-icon')){
+            console.log(e.target, 'newww');
+            personNameInput.disabled = true;
+            personNameInput.blur();
+            const btnEdit = document.querySelectorAll('.people-add-icon')
+            btnEdit.forEach(btn =>{
+               btn.classList.remove('people-add-icon-active')
+             })
+            callEditBtnCounter = 0
+        } 
+
         inputOnFocusDisableAddGuestBtn()
     })
+    window.addEventListener('click', (e)=>{
+        if(!e.target.classList.contains('people-name') && !e.target.classList.contains('people-add-icon')){
+            console.log(e.target, 'newww');
+            const inputName = document.getElementsByClassName('people-list')[1].querySelectorAll('.people-name')
+            console.log(inputName);
+            inputName.forEach(input =>{
+                input.disabled = true;
+                input.blur();
+            })
+            // personNameInput.disabled = true;
+            // personNameInput.blur();
+            const btnEdit = document.querySelectorAll('.people-add-icon')
+            btnEdit.forEach(btn =>{
+               btn.classList.remove('people-add-icon-active')
+             })
+            callEditBtnCounter = 0
+        } 
+    })
 }
+
+
 
 function deletePerson(person, indexList){
     let toUpDate = "";
@@ -115,29 +152,4 @@ console.log('add secondary guest Extra');
 function deletePersonAlert(person){
 //alert before delete primary guest
 return confirm(`Do you want delete ${person}?`)
-}
-
-
-export function closeSecondaryGuestModal(modal){
-    const closeBtn = modal.parentElement.getElementsByClassName('close-secondary-modal')[0]
-    closeBtn.addEventListener('click', (e)=>{
-        if(e.target.classList.contains('close-secondary-modal')){
-            //hide secondary guests modal
-            modal.parentElement.classList.remove('secondary-guests-show')
-            
-            //clean secondary guest list content
-            modal.innerHTML = ''
-
-        }
-    })
-    window.addEventListener("keydown", (e)=>{
-        if(e.key == 'Escape'){
-            //hide secondary guests modal
-            modal.parentElement.classList.remove('secondary-guests-show')
-            
-            //clean secondary guest list content
-            modal.innerHTML = ''
-
-        }
-    })
 }

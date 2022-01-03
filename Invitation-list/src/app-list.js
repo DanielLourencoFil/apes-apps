@@ -4,6 +4,7 @@ import { renderPeopleList} from "./renderPeopleList.js";
 import { checkboxChangeStatus, checkboxRenderStatus } from "./checkbox.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import { editPerson} from "./edit-person.js";
+import {closeSecondaryGuestModal} from "./enable-disable-features.js"
 // import { editPerson, editSecondaryPerson } from "./edit-person.js";
 
 
@@ -31,6 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
         totalGuestsCounter()
         editPerson(0)
         editPerson(1)
+        closeSecondaryGuestModal()
 
         // updateNewPerson()
 
@@ -53,6 +55,8 @@ window.addEventListener('DOMContentLoaded', () => {
             totalGuestsCounter()
             editPerson(0)
             editPerson(1)
+
+            closeSecondaryGuestModal()
 
             // updateNewPerson()
 

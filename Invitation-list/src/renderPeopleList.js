@@ -1,7 +1,7 @@
 import {checkboxChangeStatus, checkboxRenderStatus} from './checkbox.js'
 import { getDataLocalStorage, updateLocalStorage } from './localStorage.js';
 import  {idGenerator} from './id-generator.js'
-import { closeSecondaryGuestModal } from './edit-person.js';
+//import { closeSecondaryGuestModal } from './edit-person.js';
 // import { totalGuestsCounter } from './total-guests-counter.js';
 
 
@@ -133,7 +133,7 @@ export function renderSecondaryGuestsList(person){
         }
     }
 })
-    closeSecondaryGuestModal(secondaryGuestList)
+    // closeSecondaryGuestModal(secondaryGuestList)
 }
 
 export function renderNewSecondaryGuest(person){
