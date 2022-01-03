@@ -18,13 +18,10 @@ export function updateNewPerson(){
     addPeopleForm.addEventListener("keydown", (e)=>{
         let updatedPeopleList = getDataLocalStorage();
         if(e.key === 'Enter' && newGuestsNumber.value == ''){
-            console.log('oooooooooooooh');
             emptyInputAlert(newPersonName, alertMessage)              
         }
 
         if(e.key === 'Enter' && newGuestsNumber.value != ''){
-            
-            console.log('ihhhhhhhhhhhhhhhhhh');
          addPrimaryNewGuest(newPersonName, newGuestsNumber, updatedPeopleList, alertMessage)                 
         }
         

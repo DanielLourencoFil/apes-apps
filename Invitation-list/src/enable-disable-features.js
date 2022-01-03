@@ -1,16 +1,12 @@
 export function inputOnFocusDisableAddGuestBtn(counter){
     const newSecondaryGuestBtn = document.getElementsByClassName('extra-guest-btn')[0]
-    console.log(newSecondaryGuestBtn);
     if(counter == 1){
-        console.log(counter,'from inputfocus, false ');
         newSecondaryGuestBtn.disabled = true
 
     }
     if(counter == 2){
-        console.log(counter,'from inputfocus, true');
         newSecondaryGuestBtn.disabled = false
     }
-
 }
 
 //inputOnFocusDisableAddGuestBtn()
@@ -28,13 +24,11 @@ export function inputKeyDown(form){
             keyDownCounter++
            
             if(keyDownCounter == 1){
-                console.log(inputGuestName, keyDownCounter);
                 inputGuestName.value = ''
                 inputGuestNumber.value = ''
                 inputGuestName.focus()
             }
             if(keyDownCounter == 2){
-                console.log(inputGuestName, keyDownCounter);
                 inputGuestName.value = ''
                 inputGuestNumber.value = ''
                 inputGuestName.blur()
@@ -52,7 +46,6 @@ export function closeSecondaryGuestModal(){
     const secondaryGuestsList = document.querySelector('.secondary-guests-list')
     
     closeBtn.addEventListener('click', (e)=>{
-        console.log('oi');
         
             //hide secondary guests modal
             modalSecondaryGuests.classList.remove('secondary-guests-show')

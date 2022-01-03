@@ -1,9 +1,6 @@
 import {checkboxChangeStatus, checkboxRenderStatus} from './checkbox.js'
 import { getDataLocalStorage, updateLocalStorage } from './localStorage.js';
 import  {idGenerator} from './id-generator.js'
-//import { closeSecondaryGuestModal } from './edit-person.js';
-// import { totalGuestsCounter } from './total-guests-counter.js';
-
 
 //----------- RENDER PRIMARY GUEST LIST -------------////
 export function renderPeopleList(dataObj) {
@@ -79,11 +76,8 @@ export function renderSecondaryGuestsList(person){
                     // if (YES/TRUE) it calls updateLocalStorage function by the end of "secondaryNewGuestsTemporaryList" generation
                     // It is necessary for the new secondary guests (whitout a name yeat) need a id  
                 counter++
-                // if(counter > 1){
-                //     // counter = 0
-                // }
+                
                 let messageEmptyList = {"name":`add guest's name` }; 
-                // const personGuestsNumber = person['guests'] || 1
                 const personGuestsNumber = (person['guests'] > 1) ? person['guests'] : 1;
                 if(personGuestsNumber >= 2){
                     for(let i = 1; i < personGuestsNumber; i++){
@@ -120,7 +114,6 @@ export function renderSecondaryGuestsList(person){
             </li>`;
             secondaryNewGuestsTemporaryList.push({guest, "idGuest": newGuestId})
             secondaryGuestList.innerHTML = guestsListHTML;
-            // console.log(guestsListHTML);
         })
 
     //------------- if guest list is NEW (empty) : counter == 1 (YES/TRUE)  update LocalStorage 
@@ -133,14 +126,10 @@ export function renderSecondaryGuestsList(person){
         }
     }
 })
-    // closeSecondaryGuestModal(secondaryGuestList)
 }
 
 export function renderNewSecondaryGuest(person){
-    console.log(person, 'from new function!!!!');
-    // let guestsListHTML = "";
-    console.log(person);
-    
+   
     const personNumber = person.children.length + 1;
     const primaryGuestId = person.querySelector('[data-id]').getAttribute('data-id');
     const secondaryGuestName = `add guest's name ${personNumber}`
@@ -158,7 +147,4 @@ export function renderNewSecondaryGuest(person){
     </li>`;
 
     person.innerHTML += newSecondaryHTML
-
-    // const toUpDate = "add new guest secondary guests"
-    //         updateLocalStorage(person, secondaryNewGuestsTemporaryList, toUpDate)
 }

@@ -7,10 +7,8 @@ export function checkboxChangeStatus(){
     const peopleList = document.querySelector('.people-list')
     
     peopleList.addEventListener('click', (e) =>{
-        // debugger
         const checkbox = [...document.getElementsByClassName('checkbox')];
         const checkboxCurrent = checkbox[checkbox.indexOf(e.target.parentElement)];
-        // console.log(checkboxCurrent);
         
         if(e.target.parentElement == checkboxCurrent){
             const checkboxStatus = parseInt(checkboxCurrent.getAttribute('data-status'))
@@ -58,7 +56,6 @@ export function checkboxChangeStatus(){
         }
     })
     checkboxRenderStatus()
-    
 } 
 
 //  CHECKBOX RENDER CHANCE STATUS

@@ -89,7 +89,6 @@ button {
 	background-color: #fff;
 	display: grid;
 	place-content: center;
-	/* display: block; */
 	z-index: 999;
 }
 .hide-loading {
@@ -106,7 +105,6 @@ button {
 	font-size: 2rem;
 }
 .people-list-container {
-	/* position: relative; */
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -121,30 +119,24 @@ button {
 	box-shadow: var(--box-shadow-1);
 }
 .people-list {
-	/* list-style: decimal; */
-	/* margin-bottom: 2rem; */
 	flex: 1 0 auto;
 	text-transform: capitalize;
 	margin: 0;
 	padding: 0;
 }
 .people-list li {
-	/* display: list-item;
-	list-style-position: inside; */
 	border-bottom: 1px solid grey;
 	padding: 1.25rem 0.5rem;
 	margin: 0;
 }
 
 .people-row {
-	/* border-collapse: collapse; */
 	display: grid;
 	grid-template-columns: 0.5fr 1fr 3fr 2fr 1fr;
 	justify-content: center;
 	justify-items: left;
 	align-items: center;
 	flex-direction: row;
-	/* gap: 5rem; */
 	text-align: left;
 }
 .people-name {
@@ -152,7 +144,6 @@ button {
 	background-color: inherit;
 	font-size: 1rem;
 	text-transform: capitalize;
-	/* margin-left: 1rem; */
 	width: 100%;
 	padding: 0.25rem 0;
 }
@@ -237,10 +228,6 @@ button {
 	text-transform: capitalize;
 	margin: 0;
 }
-/* .total-guests-title {
-}
-.total-guests-number {
-} */
 
 /* ADD PRIMARY GUESTS  */
 .add-people-container {

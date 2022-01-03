@@ -8,9 +8,6 @@ let callEditBtnCounter = 0;
 export function editPerson(indexList){
     let peopleListTag = document.getElementsByClassName('people-list')[indexList];
 
-    // let modalSecondaryGuests = document.getElementsByClassName('secondary-guests-container')[0]
-
-    
     peopleListTag.addEventListener('click', (e)=>{
         
         let person = e.target.parentElement.parentElement;
@@ -33,7 +30,6 @@ export function editPerson(indexList){
                 renderSecondaryGuestsList(person)
             }
              
-            
             person = e.target.parentElement.parentElement;
             personNameInput = person.getElementsByClassName('people-name')[0];
             personName = personNameInput.value; 
@@ -79,7 +75,6 @@ export function editPerson(indexList){
         }
         // cancel inputName and edit styles if click event is not related with edit action 
         if(!e.target.classList.contains('people-name') && !e.target.classList.contains('people-add-icon')){
-            console.log(e.target, 'newww');
             personNameInput.disabled = true;
             personNameInput.blur();
             const btnEdit = document.querySelectorAll('.people-add-icon')
@@ -93,15 +88,12 @@ export function editPerson(indexList){
     })
     window.addEventListener('click', (e)=>{
         if(!e.target.classList.contains('people-name') && !e.target.classList.contains('people-add-icon')){
-            console.log(e.target, 'newww');
             const inputName = document.getElementsByClassName('people-list')[1].querySelectorAll('.people-name')
-            console.log(inputName);
             inputName.forEach(input =>{
                 input.disabled = true;
                 input.blur();
             })
-            // personNameInput.disabled = true;
-            // personNameInput.blur();
+            
             const btnEdit = document.querySelectorAll('.people-add-icon')
             btnEdit.forEach(btn =>{
                btn.classList.remove('people-add-icon-active')
@@ -143,11 +135,6 @@ function editGuests(){
 console.log('add secondary guest Extra');
 
 }
-
-// function addExtraSecondaryGuest(){
-// console.log('add Extra');
-// }
-
 
 function deletePersonAlert(person){
 //alert before delete primary guest

@@ -4,14 +4,13 @@ export function totalGuestsCounter(){
     const peopleList = getDataLocalStorage()
     let totalGuestsNumber = 0;
 
-    peopleList.forEach(guest => {
-    if(guest['status'] != 2){
-        totalGuestsNumber += guest['guests'];
-    }
+        peopleList.forEach(guest => {
+        if(guest['status'] != 2){
+            totalGuestsNumber += guest['guests'];
+        }
     });
     
     renderTotalGuestNumber(totalGuestsNumber)
-
 }
 
 function renderTotalGuestNumber(number){

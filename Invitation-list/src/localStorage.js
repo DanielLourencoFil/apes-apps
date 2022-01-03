@@ -50,9 +50,7 @@ export function updateLocalStorage(currentPerson, currentPersonData, toUpDate) {
             
            // array with 3: secondary guest name edit
                 if(currentPersonData.length == 3){
-                    //console.log('333333333333', currentPersonData);
-                   //console.log(person.guestsNames);
-                    //console.log(currentPersonData[2]);
+                    
                     const secondaryGuest = person.guestsNames.findIndex(element => element.idGuest === currentPersonData[2])
                     console.log(secondaryGuest, 'okkkkkkkkkk');
                     
@@ -64,37 +62,6 @@ export function updateLocalStorage(currentPerson, currentPersonData, toUpDate) {
                         person.guestsNames[secondaryGuest].name = currentPersonData[0];
                         person.guestsNames[secondaryGuest].idGuest = currentPersonData[2];
                     }
-                    /*for(let guest of person.guestsNames){
-                        const guestIndex = person['guestsNames'].indexOf(guest);
-                        console.log(guestIndex, 'index', guest);
-                       currentPersonData[0]
-                        if(guest.idGuest == currentPersonData[2]){
-                            guest.name = 
-                        }
-                        if(guest.idGuest != currentPersonData[2]){
-                            console.log('yeeeeeeeeeeeeeeees');
-                        }
-                        
-                    }
-                    
-                    person.guestsNames.push({"name": currentPersonData[0], "idGuest": currentPersonData[2]});
-                    person.guests = person.guests + 1 
-                    */
-                    
-                    
-                    // for(let guest of person.guestsNames){
-                    //     if(guest.idGuest == currentPersonData[2]){
-                    //         guest.name = currentPersonData[0]
-                    //     }
-                    //     if(guest.idGuest != currentPersonData[2]){
-                    //         console.log('yeeeeeeeeeeeeeeees');
-                    //     }
-                        
-                    // }
-                    
-                    // person.guestsNames.push({"name": currentPersonData[0], "idGuest": currentPersonData[2]});
-                    // person.guests = person.guests + 1 
-                    
                 }
             }
         }

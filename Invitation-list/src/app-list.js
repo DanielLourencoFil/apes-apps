@@ -1,11 +1,10 @@
-import { setLocalStorage, getDataLocalStorage, updateLocalStorage } from "./localStorage.js";
+import { setLocalStorage, getDataLocalStorage} from "./localStorage.js";
 import { updateNewPerson} from "./uptadeNewPerson.js";
 import { renderPeopleList} from "./renderPeopleList.js";
 import { checkboxChangeStatus, checkboxRenderStatus } from "./checkbox.js";
 import { totalGuestsCounter } from "./total-guests-counter.js";
 import { editPerson} from "./edit-person.js";
 import {closeSecondaryGuestModal} from "./enable-disable-features.js"
-// import { editPerson, editSecondaryPerson } from "./edit-person.js";
 
 
 const url = "peopleList.json";
@@ -26,17 +25,12 @@ window.addEventListener('DOMContentLoaded', () => {
         updateNewPerson()
         
         checkboxChangeStatus()
-        
-        // updateNewPerson()
 
         totalGuestsCounter()
         editPerson(0)
         editPerson(1)
         closeSecondaryGuestModal()
 
-        // updateNewPerson()
-
-        // editSecondaryPerson(1);
     } else {
         
         fetch(url).then(response => response.json().then(peopleListAjax => {
@@ -49,18 +43,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
             checkboxChangeStatus()
             checkboxRenderStatus()
-            
-            // updateNewPerson()
 
             totalGuestsCounter()
             editPerson(0)
             editPerson(1)
 
             closeSecondaryGuestModal()
-
-            // updateNewPerson()
-
-            // editSecondaryPerson(1);
         }));
     }
 });
