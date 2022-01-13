@@ -16,8 +16,8 @@ In order to practice CSS, I also worked on the styling developing it a bit furth
 
 - **Daniel Lourenço**: @DanielLourencoFil (https://github.com/DanielLourencoFil)
 
-## view app
+## View app
 
-https://my-projects-apps.netlify.app/
+https://timer-my-projects.netlify.app/
 
 Thanks to visiting me and good coding!
