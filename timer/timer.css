@@ -1,0 +1,154 @@
+:root {
+	--color-dark-100: rgba(0, 0, 0, 0.1);
+	--color-dark-200: rgba(0, 0, 0, 0.2);
+	--color-dark-200: rgba(0, 0, 0, 0.2);
+	--color-dark-500: rgba(0, 0, 0, 0.5);
+	--color-light-400: rgb(221, 221, 221);
+	--color-light-500: rgb(238, 238, 238);
+	--color-light-600: rgb(184, 184, 184);
+	--color-light-800: rgba(255, 255, 255, 0.8);
+	--color-light-900: rgba(255, 255, 255, 0.3);
+	--color-light-1000: rgb(58, 58, 58);
+}
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+}
+body {
+	box-sizing: border-box;
+	background-color: var(--color-light-400);
+}
+.timer-container {
+	margin: 0 auto;
+	margin-top: 3rem;
+	padding-bottom: 4rem;
+	background-color: var(--color-light-500);
+	width: 85vw;
+	max-width: 345px;
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 0;
+	align-items: center;
+	gap: 4rem;
+	border-radius: 2rem;
+	box-shadow: 5px 5px 20px var(--color-light-600);
+}
+.svg-container {
+	margin-top: 3rem;
+	position: relative;
+}
+.btn-container {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	gap: 5rem;
+}
+.timer-input {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	width: 65%;
+	font-size: 3.5rem;
+	border: transparent;
+	padding: 0;
+	background-color: inherit;
+	transition: all 0.3s linear;
+	color: var(--color-light-1000);
+	cursor: pointer;
+}
+.timer-input:focus,
+.timer-input:hover {
+	border-radius: 1rem;
+	outline: 0;
+	box-shadow: inset -6px -6px 5px var(--color-light-800),
+		inset 10px 10px 10px var(--color-dark-100);
+}
+/* REMOVE arrows in number input*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.timer-start {
+	display: none;
+}
+.timer-pause {
+	display: none;
+}
+.show-btn {
+	display: block;
+}
+button {
+	width: 4.5rem;
+	height: 4.5rem;
+	display: grid;
+	place-items: center;
+	border-radius: 50%;
+	border: transparent;
+	box-shadow: 5px 5px 15px var(--color-light-600);
+	background-color: var(--color-light-400);
+	color: var(--color-light-1000);
+}
+i.fas {
+	border: transparent;
+	font-size: 2rem;
+	cursor: pointer;
+	transition: color 0.3s linear;
+}
+i.fas:hover {
+	color: var(--color-dark-500);
+}
+#svg-timer {
+	position: relative;
+}
+.circle-path {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	top: 0;
+	right: 0;
+	transform: translate(-2%, 2%);
+	border: 20px solid var(--color-light-900);
+	box-shadow: -6px -6px 5px var(--color-light-400),
+		10px 10px 10px var(--color-dark-200),
+		inset -5px -5px 10px var(--color-light-400),
+		inset 10px 10px 10px var(--color-dark-500);
+	border-radius: 50%;
+	background-color: transparent;
+	z-index: 0;
+}
+/*animation after timer is completed */
+.on-completed {
+	animation: completed 3s linear;
+}
+@keyframes completed {
+	0% {
+		opacity: 1;
+	}
+	20% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 0;
+	}
+	80% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
