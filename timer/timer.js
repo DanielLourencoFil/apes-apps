@@ -68,14 +68,17 @@ export class Timer{
         }
     }
     reset = ()=>{
-        if(this.status === 1){
-            this.status = 0
-        }
+        // if(this.status === 1){
+        //     this.status = 0
+        // }
         if(this.onReset){
             this.onReset()
         }
+        this.status = 0;
         this.pause()
         this.timeRemaining = 0;
+        this.startBtn.classList.add('show-btn')
+        this.pauseBtn.classList.remove('show-btn')
     }
     inputLimit = ()=>{
         if(this.timeInput.value.length >= 6){

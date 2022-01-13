@@ -21,6 +21,7 @@ export class TimerAnimation {
         this.circle.setAttribute('stroke-dashoffset', this.offsetDown)
     }
     resetOffset(){
+        this.circle.setAttribute('stroke-dashoffset', this.perimeter)
         this.circle.setAttribute('stroke-dashoffset', 0)
     }
     completed(){
@@ -32,7 +33,6 @@ export class TimerAnimation {
         this.circlePath.classList.add('on-completed')
         setTimeout(()=>{
             this.circlePath.classList.remove('on-completed')
-            console.log('removed');
         },3100)
     }
 

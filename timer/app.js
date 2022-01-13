@@ -18,6 +18,7 @@ const timer = new Timer(timerInput, timerStartBtn, timerPauseBtn, timerResetBtn,
         timerCircle.totalDuration = initialDuration
     },
     onPause(timeRemainig){
+        
     },
     onTick(timeRemaining){
         timerCircle.countingDownAnimation(timeRemaining)
