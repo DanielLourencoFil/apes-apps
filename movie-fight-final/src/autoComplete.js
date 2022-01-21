@@ -15,12 +15,18 @@ export function CreateAutoComplete({valuesToExtractFirst,valuesToExtractSecond, 
     const input = root.querySelector('.item-input')
     const dropdownMenu = root.querySelector('.search-dropdown-menu')
     
+    // show tutorial message: default
+    const tutorial = document.querySelector('.tutorial')
+    tutorial.classList.add('show-tutorial')
     
     // on search input create a html list with items
     const onInput = async (e)=> {
         //empty and hide dropdown menu : default behavior
         dropdownMenu.innerHTML='';
         dropdownMenu.classList.remove('show-dropdown-menu')
+
+        //hide tutorial message
+        tutorial.classList.remove('show-tutorial')
 
         const items = await fetchItems('s', e.target.value);
         

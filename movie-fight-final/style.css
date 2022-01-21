@@ -63,13 +63,14 @@ img {
 /* ===== item search wrapper ===== */
 
 .main-wrapper {
-	width: 100%;
+	width: 100vw;
+	max-width: 1200px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: flex-start;
 	gap: 1rem 0;
-	/* flex-grow: 1; */
+	margin: 0 auto;
 }
 
 .item-search-wrapper {
@@ -79,6 +80,7 @@ img {
 	justify-content: space-between;
 	align-items: flex-start;
 	margin: 0 auto;
+	margin-top: 2rem;
 }
 
 .alert-search {
@@ -96,7 +98,6 @@ img {
 .item-main-title {
 	font-size: 1.5rem;
 	font-weight: 700;
-	margin-top: 4rem;
 	margin-bottom: 0.5rem;
 }
 
@@ -115,17 +116,56 @@ img {
 	outline-color: var(--color-sucess-500);
 	box-shadow: 0 0 10px var(--color-sucess-900);
 }
+.item-input::-webkit-input-placeholder {
+	color: var(--color-light-400);
+}
+.item-input::-moz-placeholder {
+	color: var(--color-light-400);
+}
+.item-input:-ms-input-placeholder {
+	color: var(--color-light-400);
+}
+.item-input::-ms-input-placeholder {
+	color: var(--color-light-400);
+}
 .item-input::placeholder {
 	color: var(--color-light-400);
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 800px) {
 	.main-wrapper {
 		flex-direction: row;
 	}
 	.item-search-wrapper {
-		width: 40vw;
+		width: 38vw;
 	}
+}
+
+/* ===== tutorial ===== */
+.tutorial {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 0;
+	overflow-y: hidden;
+	padding: 0;
+	width: 75%;
+	max-width: 500px;
+	background-image: var(--color-gradient-linear);
+	border-radius: var(--border-radius-1);
+	color: white;
+	font-size: 1.35rem;
+	text-transform: capitalize;
+	letter-spacing: 0.1rem;
+	font-weight: bold;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 2.5rem;
+	transition: all 0.5s linear;
+}
+.show-tutorial {
+	padding: 1rem 1.5rem;
+	height: 5rem;
 }
 
 /* ===== item result after comparison ===== */
@@ -140,6 +180,14 @@ img {
 	display: inline-block;
 	opacity: 1;
 	animation: winner 1s linear 10 alternate-reverse;
+}
+@-webkit-keyframes winner {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 @keyframes winner {
 	0% {
@@ -163,24 +211,6 @@ img {
 .show-dropdown-menu {
 	display: block;
 }
-
-/* 
-
-.container {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto;
-	width: 50%;
-}
-
-.search-container {
-	width: 20rem;
-	margin-top: 2rem;
-}
-
-
 
 /*dropdown search menu styles*/
 
@@ -272,15 +302,12 @@ img {
 .item-sucess {
 	font-weight: bolder;
 	background-color: var(--color-sucess-500);
-	/* border-bottom: 1px solid var(--color-light-500); */
 }
 .item-is-smaller {
 	background-color: var(--color-alert-500);
-	/* border-bottom: 1px solid var(--color-light-500); */
 }
 .item-even {
 	background-color: var(--color-light-300);
-	/* border-bottom: 1px solid var(--color-light-500); */
 }
 
 /*FOOTER*/
