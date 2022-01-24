@@ -200,16 +200,21 @@ img {
 
 /* ===== SEARCH DROPDOWN MENU ===== */
 .search-dropdown-menu {
-	display: none;
+	display: block;
 	width: 100%;
-	padding: 0.5rem;
+	height: 0;
+	padding: 0 0.5rem;
 	background-color: var(--color-sucess-500);
 	max-height: 300px;
 	overflow-y: scroll;
 	border-radius: var(--border-radius-1);
+	transition: all 0.5s linear;
 }
 .show-dropdown-menu {
-	display: block;
+	/* display: block; */
+	height: auto;
+	max-height: 300px;
+	padding: 0.5rem;
 }
 
 /*dropdown search menu styles*/
