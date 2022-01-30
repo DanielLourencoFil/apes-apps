@@ -17,7 +17,6 @@ window.addEventListener('DOMContentLoaded', () => {
     
     
     if (localStorage.getItem('peopleList') != null) {
-        console.log('yes, local peopleLists exist');
         
         let peopleList = getDataLocalStorage()
         renderPeopleList(peopleList)
@@ -34,7 +33,6 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         
         fetch(url).then(response => response.json().then(peopleListAjax => {
-            console.log(peopleListAjax, "ajax request");
             
             setLocalStorage(peopleListAjax);
             renderPeopleList(getDataLocalStorage)

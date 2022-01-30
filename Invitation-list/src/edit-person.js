@@ -25,7 +25,7 @@ export function editPerson(indexList){
             if(e.target.classList.contains('people-add-icon')){
                 const toUpDate = "edit guest";  
 
-                // CALL function only if calling is made from primary guest list : avoid bug - li is freezed! 
+                // CALL function only if calling is made from primary guest list : avoid bug - li is freezed?! 
             if(indexList == 0){
                 renderSecondaryGuestsList(person)
             }
@@ -33,9 +33,6 @@ export function editPerson(indexList){
             person = e.target.parentElement.parentElement;
             personNameInput = person.getElementsByClassName('people-name')[0];
             personName = personNameInput.value; 
-            // let personNameInput = person.getElementsByClassName('people-name')[0];
-            // let personName = personNameInput.value; 
-          
             
             if(indexList == 1 ){
             callEditBtnCounter++;
