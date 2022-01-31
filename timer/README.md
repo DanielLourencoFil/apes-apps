@@ -14,7 +14,7 @@ In order to practice CSS, I also worked on the styling developing it a bit furth
 
 ## Authors
 
-- **Daniel Lourenço**: [@DanielLourencoFil] (https://github.com/DanielLourencoFil)
+- **Daniel Lourenço**: @DanielLourencoFil (https://github.com/DanielLourencoFil)
 
 ## View app
 
