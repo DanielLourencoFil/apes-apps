@@ -18,6 +18,6 @@ In order to practice CSS, I also worked on the styling developing it a bit furth
 
 ## View app
 
-https://timer-my-projects.netlify.app/
+[Visit the project](https://timer-my-projects.netlify.app/)
 
 Thanks to visiting me and good coding!

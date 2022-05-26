@@ -13,6 +13,6 @@ Obviouslly it needs a styling improvent (I'll do it who knows when...)
 
 ## View app
 
-https://invitation-list.netlify.app/
+[Visit the project](https://invitation-list.netlify.app/)
 
 Thanks to visiting me and good coding!

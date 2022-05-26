@@ -22,6 +22,6 @@ In order to practice CSS, I also worked on the styling development without the B
 
 ## View app
 
-https://movies-fight-app.netlify.app/
+[Visit the project](https://movies-fight-app.netlify.app/)
 
 Thanks to visiting me and good coding!
